@@ -57,149 +57,111 @@
 
 
     /* =========================================
-       INTRO SCREEN
+       INTRO SCREEN (ENVELOPE / WAX SEAL DESIGN)
     ========================================= */
 
     #intro {
       min-height: 100svh;
-
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-
+      justify-content: space-between;
       position: relative;
-
       cursor: pointer;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(221, 123, 25, 0.35),
-          transparent 45%
-        ),
-        linear-gradient(
-          135deg,
-          #210301,
-          #6d0d08,
-          #240301
-        );
-
-      transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
+      background: #f4eee3;
+      background-image: radial-gradient(#e0d6c3 1px, transparent 1px);
+      background-size: 20px 20px;
+      padding: 60px 20px 40px;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      overflow: hidden;
     }
 
+    /* Vertical Center Seam */
     #intro::before {
       content: "";
-
       position: absolute;
-
-      inset: 20px;
-
-      border: 1px solid rgba(245, 214, 129, 0.45);
-
-      border-radius: 20px;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(180deg, #c39a48, #e8c878, #c39a48);
+      transform: translateX(-50%);
+      box-shadow: 0 0 4px rgba(180, 130, 40, 0.4);
+      z-index: 1;
     }
 
-    .intro-decoration {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .intro-decoration::before {
-      content: "✦";
-
-      position: absolute;
-
-      top: 12%;
-      left: 12%;
-
-      color: var(--gold);
-
-      font-size: 45px;
-
-      opacity: 0.65;
-    }
-
-    .intro-decoration::after {
-      content: "✦";
-
-      position: absolute;
-
-      right: 12%;
-      bottom: 12%;
-
-      color: var(--gold);
-
-      font-size: 45px;
-
-      opacity: 0.65;
-    }
-
-    .intro-content {
+    /* Top Heading */
+    .top-heading {
       position: relative;
-
       z-index: 2;
-
-      text-align: center;
-
-      padding: 30px;
-    }
-
-    .om {
       font-family: "Yatra One", serif;
-
-      font-size: clamp(65px, 18vw, 115px);
-
-      color: var(--gold-light);
-
-      text-shadow:
-        0 5px 25px rgba(0,0,0,.55);
-
-      animation: floating 3s ease-in-out infinite;
+      font-size: clamp(20px, 5vw, 26px);
+      color: #7a1d1d;
+      letter-spacing: 2px;
+      background: #f4eee3;
+      padding: 6px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(195, 154, 72, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    .intro-small {
-      margin-top: 10px;
-
-      color: #f7dda4;
-
-      font-size: 16px;
-
-      letter-spacing: 3px;
+    /* Central Gold Wax Seal */
+    .wax-seal-wrapper {
+      position: relative;
+      z-index: 2;
+      margin: auto 0;
     }
 
-    .tap-circle {
-      width: 95px;
-      height: 95px;
-
-      margin: 35px auto 0;
-
+    .wax-seal {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-
-      border: 1px solid var(--gold-light);
-
+      background: radial-gradient(circle at 35% 35%, #fbe396, #d49e35 50%, #8a5d12 90%);
+      border: 3px solid #fbe396;
+      box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.6),
+        inset 0 -5px 12px rgba(0, 0, 0, 0.4);
       display: flex;
-
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      animation: pulse 2s infinite;
+      text-align: center;
+      padding: 10px;
+      animation: pulseGlow 2.5s infinite ease-in-out;
     }
 
-    .tap-icon {
-      font-size: 32px;
+    .wax-seal-inner {
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      border: 1.5px dashed #6b4307;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tap-text {
-      margin-top: 15px;
+    .seal-text {
+      font-family: "Noto Serif Devanagari", serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #4a2d02;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+      line-height: 1.3;
+    }
 
-      color: var(--gold-light);
-
-      font-size: 14px;
-
-      letter-spacing: 3px;
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.6);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 14px 30px rgba(212, 158, 53, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.8);
+      }
     }
 
 
@@ -1050,20 +1012,6 @@
        ANIMATIONS
     ========================================= */
 
-    @keyframes pulse {
-
-      0%,100% {
-        box-shadow:
-          0 0 0 0 rgba(245,214,129,.25);
-      }
-
-      50% {
-        box-shadow:
-          0 0 0 18px rgba(245,214,129,0);
-      }
-
-    }
-
     @keyframes floating {
 
       0%,100% {
@@ -1143,37 +1091,29 @@
 
 
   <!-- =========================================
-       FIRST SCREEN
+       FIRST SCREEN (ENVELOPE DESIGN)
     ========================================= -->
 
-  <section
-    id="intro"
-    onclick="openInvitation()"
-  >
+  <section id="intro" onclick="openInvitation()">
 
-    <div class="intro-decoration"></div>
+    <!-- Top Text -->
+    <div class="top-heading">
+      ॥ श्री गणेशाय नमः ॥
+    </div>
 
-    <div class="intro-content">
-
-      <div class="om">
-        ॐ
-      </div>
-
-      <div class="intro-small">
-        श्री गणेशाय नमः
-      </div>
-
-      <div class="tap-circle">
-        <div class="tap-icon">
-          🪔
+    <!-- Center Wax Seal Button -->
+    <div class="wax-seal-wrapper">
+      <div class="wax-seal">
+        <div class="wax-seal-inner">
+          <div class="seal-text">
+            TAP TO<br>OPEN
+          </div>
         </div>
       </div>
-
-      <div class="tap-text">
-        TAP TO OPEN
-      </div>
-
     </div>
+
+    <!-- Spacer for balance -->
+    <div style="height: 30px; position: relative; z-index: 2;"></div>
 
   </section>
 
@@ -1782,7 +1722,7 @@
 
           });
 
-      }, 850);
+      }, 800);
 
     }
 
@@ -1922,9 +1862,6 @@
 
     /* =========================================
        SEND RSVP
-       
-       Sends URLSearchParams via POST mode 'no-cors'
-       to deliver payload properly to Apps Script.
     ========================================= */
 
     async function sendRSVP(data) {
