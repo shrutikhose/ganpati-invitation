@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -7,6 +6,7 @@
 
   <title>बाप्पाचे आगमन | Bhokare परिवार</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -16,6 +16,10 @@
   >
 
   <style>
+
+    /* =========================================
+       BASIC RESET
+    ========================================= */
 
     * {
       margin: 0;
@@ -39,16 +43,22 @@
       --dark: #160603;
       --dark-red: #350604;
       --red: #690b07;
+      --red-light: #8f1710;
       --gold: #d9a441;
       --gold-light: #f5d681;
       --cream: #fff1c9;
       --muted: #e5c78c;
     }
 
+    button,
+    input {
+      font-family: inherit;
+    }
 
-    /* =========================
-       INTRO
-    ========================= */
+
+    /* =========================================
+       INTRO SCREEN
+    ========================================= */
 
     #intro {
       min-height: 100svh;
@@ -58,6 +68,7 @@
       justify-content: center;
 
       position: relative;
+
       cursor: pointer;
 
       background:
@@ -74,27 +85,65 @@
         );
 
       transition:
-        opacity .9s ease,
-        transform .9s ease;
+        opacity 0.9s ease,
+        transform 0.9s ease;
     }
 
     #intro::before {
       content: "";
 
       position: absolute;
+
       inset: 20px;
 
-      border:
-        1px solid rgba(245,214,129,.45);
+      border: 1px solid rgba(245, 214, 129, 0.45);
 
       border-radius: 20px;
     }
 
+    .intro-decoration {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .intro-decoration::before {
+      content: "✦";
+
+      position: absolute;
+
+      top: 12%;
+      left: 12%;
+
+      color: var(--gold);
+
+      font-size: 45px;
+
+      opacity: 0.65;
+    }
+
+    .intro-decoration::after {
+      content: "✦";
+
+      position: absolute;
+
+      right: 12%;
+      bottom: 12%;
+
+      color: var(--gold);
+
+      font-size: 45px;
+
+      opacity: 0.65;
+    }
+
     .intro-content {
       position: relative;
+
       z-index: 2;
 
       text-align: center;
+
       padding: 30px;
     }
 
@@ -108,8 +157,7 @@
       text-shadow:
         0 5px 25px rgba(0,0,0,.55);
 
-      animation:
-        floating 3s ease-in-out infinite;
+      animation: floating 3s ease-in-out infinite;
     }
 
     .intro-small {
@@ -130,16 +178,14 @@
 
       border-radius: 50%;
 
-      border:
-        1px solid var(--gold-light);
+      border: 1px solid var(--gold-light);
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      animation:
-        pulse 2s infinite;
+      animation: pulse 2s infinite;
     }
 
     .tap-icon {
@@ -157,9 +203,9 @@
     }
 
 
-    /* =========================
-       MAIN
-    ========================= */
+    /* =========================================
+       MAIN INVITATION
+    ========================================= */
 
     #invitation {
       display: none;
@@ -167,7 +213,7 @@
       background:
         radial-gradient(
           circle at top,
-          rgba(213,115,24,.22),
+          rgba(213, 115, 24, .22),
           transparent 38%
         ),
         linear-gradient(
@@ -202,9 +248,9 @@
     }
 
 
-    /* =========================
+    /* =========================================
        HERO
-    ========================= */
+    ========================================= */
 
     .hero {
       min-height: 100svh;
@@ -217,8 +263,7 @@
 
       inset: 15px;
 
-      border:
-        1px solid rgba(245,214,129,.35);
+      border: 1px solid rgba(245,214,129,.35);
 
       border-radius: 22px;
     }
@@ -230,8 +275,7 @@
 
       color: var(--gold-light);
 
-      animation:
-        floating 4s ease-in-out infinite;
+      animation: floating 4s ease-in-out infinite;
     }
 
     .hero-title {
@@ -252,8 +296,7 @@
     .hero-subtitle {
       margin-top: 20px;
 
-      font-size:
-        clamp(18px, 4.5vw, 24px);
+      font-size: clamp(18px, 4.5vw, 24px);
 
       line-height: 1.9;
 
@@ -263,8 +306,7 @@
     .family-name {
       margin-top: 28px;
 
-      font-size:
-        clamp(23px, 6vw, 31px);
+      font-size: clamp(23px, 6vw, 31px);
 
       font-weight: 600;
 
@@ -294,20 +336,18 @@
 
       letter-spacing: 3px;
 
-      animation:
-        bounce 2s infinite;
+      animation: bounce 2s infinite;
     }
 
 
-    /* =========================
-       GANPATI
-    ========================= */
+    /* =========================================
+       GANPATI SECTION
+    ========================================= */
 
     .section-heading {
       font-family: "Yatra One", serif;
 
-      font-size:
-        clamp(40px, 10vw, 58px);
+      font-size: clamp(40px, 10vw, 58px);
 
       color: var(--gold-light);
 
@@ -340,14 +380,12 @@
 
       padding: 10px;
 
-      border:
-        1px solid rgba(245,214,129,.7);
+      border: 1px solid rgba(245,214,129,.7);
 
       border-radius:
         220px 220px 25px 25px;
 
-      background:
-        rgba(0,0,0,.12);
+      background: rgba(0,0,0,.12);
 
       box-shadow:
         0 20px 65px rgba(0,0,0,.35);
@@ -379,8 +417,7 @@
     }
 
     .family-card-main {
-      font-size:
-        clamp(24px, 6vw, 32px);
+      font-size: clamp(24px, 6vw, 32px);
 
       color: #fff0c7;
 
@@ -398,9 +435,9 @@
     }
 
 
-    /* =========================
-       EVENT
-    ========================= */
+    /* =========================================
+       MAHA AARTI
+    ========================================= */
 
     .event-card {
       width: min(100%, 470px);
@@ -432,8 +469,7 @@
     .event-title {
       font-family: "Yatra One", serif;
 
-      font-size:
-        clamp(40px, 10vw, 55px);
+      font-size: clamp(40px, 10vw, 55px);
 
       color: var(--gold-light);
     }
@@ -475,9 +511,9 @@
     }
 
 
-    /* =========================
+    /* =========================================
        VENUE
-    ========================= */
+    ========================================= */
 
     .venue-icon {
       font-size: 50px;
@@ -488,8 +524,7 @@
     .venue-title {
       font-family: "Yatra One", serif;
 
-      font-size:
-        clamp(42px, 11vw, 60px);
+      font-size: clamp(42px, 11vw, 60px);
 
       color: var(--gold-light);
     }
@@ -545,14 +580,13 @@
       background:
         rgba(217,164,65,.3);
 
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
     }
 
 
-    /* =========================
-       RSVP
-    ========================= */
+    /* =========================================
+       RSVP SECTION
+    ========================================= */
 
     .rsvp-section {
       min-height: 70svh;
@@ -586,8 +620,7 @@
     .rsvp-title {
       font-family: "Yatra One", serif;
 
-      font-size:
-        clamp(43px, 11vw, 60px);
+      font-size: clamp(43px, 11vw, 60px);
 
       color: var(--gold-light);
 
@@ -627,17 +660,16 @@
     }
 
     .rsvp-main-button:hover {
-      transform:
-        translateY(-3px);
+      transform: translateY(-3px);
 
       background:
         rgba(217,164,65,.35);
     }
 
 
-    /* =========================
-       MODAL
-    ========================= */
+    /* =========================================
+       MODALS
+    ========================================= */
 
     .rsvp-modal {
       position: fixed;
@@ -746,9 +778,9 @@
     }
 
 
-    /* =========================
-       CHOICE
-    ========================= */
+    /* =========================================
+       CHOICE BUTTONS
+    ========================================= */
 
     .choice-buttons {
       display: flex;
@@ -793,14 +825,13 @@
     }
 
     .choice-button:hover {
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
     }
 
 
-    /* =========================
+    /* =========================================
        FORM
-    ========================= */
+    ========================================= */
 
     .rsvp-form {
       text-align: left;
@@ -845,12 +876,10 @@
     }
 
     .rsvp-input:focus {
-      border-color:
-        var(--gold);
+      border-color: var(--gold);
 
       box-shadow:
-        0 0 0 2px
-        rgba(217,164,65,.12);
+        0 0 0 2px rgba(217,164,65,.12);
     }
 
     .submit-button {
@@ -881,8 +910,7 @@
       background:
         rgba(217,164,65,.36);
 
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
     }
 
     .submit-button:disabled {
@@ -894,9 +922,9 @@
     }
 
 
-    /* =========================
+    /* =========================================
        SUCCESS
-    ========================= */
+    ========================================= */
 
     .success {
       display: none;
@@ -952,13 +980,12 @@
     }
 
 
-    /* =========================
+    /* =========================================
        FOOTER
-    ========================= */
+    ========================================= */
 
     footer {
-      padding:
-        70px 20px 90px;
+      padding: 70px 20px 90px;
 
       text-align: center;
 
@@ -982,15 +1009,14 @@
     }
 
 
-    /* =========================
-       ANIMATIONS
-    ========================= */
+    /* =========================================
+       REVEAL ANIMATION
+    ========================================= */
 
     .reveal {
       opacity: 0;
 
-      transform:
-        translateY(35px);
+      transform: translateY(35px);
 
       transition:
         opacity 1s ease,
@@ -1000,15 +1026,13 @@
     .reveal.show {
       opacity: 1;
 
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
     .scale-in {
       opacity: 0;
 
-      transform:
-        scale(.88);
+      transform: scale(.88);
 
       transition:
         opacity 1s ease,
@@ -1018,22 +1042,24 @@
     .scale-in.show {
       opacity: 1;
 
-      transform:
-        scale(1);
+      transform: scale(1);
     }
+
+
+    /* =========================================
+       ANIMATIONS
+    ========================================= */
 
     @keyframes pulse {
 
       0%,100% {
         box-shadow:
-          0 0 0 0
-          rgba(245,214,129,.25);
+          0 0 0 0 rgba(245,214,129,.25);
       }
 
       50% {
         box-shadow:
-          0 0 0 18px
-          rgba(245,214,129,0);
+          0 0 0 18px rgba(245,214,129,0);
       }
 
     }
@@ -1041,13 +1067,11 @@
     @keyframes floating {
 
       0%,100% {
-        transform:
-          translateY(0);
+        transform: translateY(0);
       }
 
       50% {
-        transform:
-          translateY(-9px);
+        transform: translateY(-9px);
       }
 
     }
@@ -1085,7 +1109,11 @@
     }
 
 
-    @media (max-width:480px) {
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 480px) {
 
       .section {
         padding:
@@ -1114,995 +1142,914 @@
 <body>
 
 
-<!-- ==================================================
-     INTRO
-================================================== -->
+  <!-- =========================================
+       FIRST SCREEN
+    ========================================= -->
 
-<section
-  id="intro"
-  onclick="openInvitation()"
->
+  <section
+    id="intro"
+    onclick="openInvitation()"
+  >
 
-  <div class="intro-content">
+    <div class="intro-decoration"></div>
 
-    <div class="om">
-      ॐ
-    </div>
+    <div class="intro-content">
 
-    <div class="intro-small">
-      श्री गणेशाय नमः
-    </div>
+      <div class="om">
+        ॐ
+      </div>
 
-    <div class="tap-circle">
+      <div class="intro-small">
+        श्री गणेशाय नमः
+      </div>
 
-      <div class="tap-icon">
-        🪔
+      <div class="tap-circle">
+        <div class="tap-icon">
+          🪔
+        </div>
+      </div>
+
+      <div class="tap-text">
+        TAP TO OPEN
       </div>
 
     </div>
 
-    <div class="tap-text">
-      TAP TO OPEN
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- ==================================================
-     INVITATION
-================================================== -->
+  <!-- =========================================
+       INVITATION
+  ========================================= -->
 
-<main id="invitation">
-
-
-<!-- HERO -->
-
-<section class="section hero">
-
-  <div class="section-inner reveal">
-
-    <div class="ganesh-symbol">
-      ॐ
-    </div>
-
-    <h1 class="hero-title">
-      बाप्पाचे<br>
-      आगमन
-    </h1>
-
-    <div class="hero-subtitle">
-      गणरायाच्या मंगल आगमनाचा<br>
-      आनंदोत्सव साजरा करण्यासाठी
-    </div>
-
-    <div class="family-name">
-      Bhokare परिवाराकडून
-    </div>
-
-    <div class="invite-text">
-      सस्नेह आमंत्रण
-    </div>
-
-  </div>
-
-  <div class="scroll-hint">
-    ↓ SCROLL
-  </div>
-
-</section>
+  <main id="invitation">
 
 
-<!-- GANPATI -->
+    <!-- HERO -->
 
-<section class="section">
+    <section class="section hero">
 
-  <div class="section-inner">
+      <div class="section-inner reveal">
 
-    <div class="reveal">
+        <div class="ganesh-symbol">
+          ॐ
+        </div>
 
-      <div class="heading-line">
+        <h1 class="hero-title">
+          बाप्पाचे<br>
+          आगमन
+        </h1>
 
-        <span></span>
+        <div class="hero-subtitle">
+          गणरायाच्या मंगल आगमनाचा<br>
+          आनंदोत्सव साजरा करण्यासाठी
+        </div>
 
-        <div>🪷</div>
+        <div class="family-name">
+          Bhokare परिवाराकडून
+        </div>
 
-        <span></span>
+        <div class="invite-text">
+          सस्नेह आमंत्रण
+        </div>
 
       </div>
 
-      <h2 class="section-heading">
-        बाप्पाचे आगमन
-      </h2>
-
-    </div>
-
-
-    <div class="ganpati-frame scale-in">
-
-      <img
-        src="hero-visual-BBS8_Fih.webp"
-        alt="श्री गणपती बाप्पा"
-        class="ganpati-image"
-      >
-
-    </div>
-
-
-    <div class="family-card reveal">
-
-      <div class="family-card-main">
-        Bhokare परिवाराकडून
+      <div class="scroll-hint">
+        ↓ SCROLL
       </div>
 
-      <div class="family-card-sub">
-        श्री गणेशाच्या आगमनानिमित्त<br>
-        आपली उपस्थिती आम्हाला आनंद देईल.
+    </section>
+
+
+    <!-- GANPATI -->
+
+    <section class="section">
+
+      <div class="section-inner">
+
+        <div class="reveal">
+
+          <div class="heading-line">
+
+            <span></span>
+
+            <div>🪷</div>
+
+            <span></span>
+
+          </div>
+
+          <h2 class="section-heading">
+            बाप्पाचे आगमन
+          </h2>
+
+        </div>
+
+
+        <div class="ganpati-frame scale-in">
+
+          <img
+            src="hero-visual-BBS8_Fih.webp"
+            alt="श्री गणपती बाप्पा"
+            class="ganpati-image"
+          >
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+          <div class="family-card-main">
+            Bhokare परिवाराकडून
+          </div>
+
+          <div class="family-card-sub">
+            श्री गणेशाच्या आगमनानिमित्त<br>
+            आपली उपस्थिती आम्हाला आनंद देईल.
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- MAHA AARTI -->
+    <!-- MAHA AARTI -->
 
-<section class="section">
+    <section class="section">
 
-  <div class="event-card scale-in">
+      <div class="event-card scale-in">
 
-    <div class="event-icon">
-      🪔
-    </div>
+        <div class="event-icon">
+          🪔
+        </div>
 
-    <h2 class="event-title">
-      महाआरती
-    </h2>
+        <h2 class="event-title">
+          महाआरती
+        </h2>
 
-    <div class="event-divider"></div>
+        <div class="event-divider"></div>
 
-    <div class="event-date">
-      Monday, 21st Sep 2026
-    </div>
+        <div class="event-date">
+          Monday, 21st Sep 2026
+        </div>
 
-    <div class="event-time">
-      6:30 PM
-    </div>
+        <div class="event-time">
+          6:30 PM
+        </div>
 
-    <div class="event-note">
-      श्री गणेशाच्या चरणी आरतीचा मंगल सोहळा
-    </div>
+        <div class="event-note">
+          श्री गणेशाच्या चरणी आरतीचा मंगल सोहळा
+        </div>
 
-  </div>
-
-</section>
-
-
-<!-- VENUE -->
-
-<section class="section">
-
-  <div class="section-inner">
-
-    <div class="reveal">
-
-      <div class="venue-icon">
-        📍
       </div>
 
-      <h2 class="venue-title">
-        स्थळ
-      </h2>
-
-    </div>
+    </section>
 
 
-    <div class="reveal">
+    <!-- VENUE -->
 
-      <div class="venue-name">
-        Bhokare Residence
+    <section class="section">
+
+      <div class="section-inner">
+
+        <div class="reveal">
+
+          <div class="venue-icon">
+            📍
+          </div>
+
+          <h2 class="venue-title">
+            स्थळ
+          </h2>
+
+        </div>
+
+
+        <div class="reveal">
+
+          <div class="venue-name">
+            Bhokare Residence
+          </div>
+
+          <div class="venue-address">
+            1483 Kirts Blvd, Apt 206<br>
+            Troy, MI 48084
+          </div>
+
+          <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=1483+Kirts+Blvd+Apt+206+Troy+MI+48084"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📍 Google Maps वर पहा
+          </a>
+
+        </div>
+
       </div>
 
-      <div class="venue-address">
-        1483 Kirts Blvd, Apt 206<br>
-        Troy, MI 48084
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section class="section rsvp-section">
+
+      <div class="rsvp-card reveal">
+
+        <div class="rsvp-icon">
+          💌
+        </div>
+
+        <h2 class="rsvp-title">
+          RSVP
+        </h2>
+
+        <div class="rsvp-subtitle">
+          आपल्या उपस्थितीची कृपया नोंद करा.<br>
+          तुमची उपस्थिती आमच्यासाठी आनंदाची बाब आहे. 🙏
+        </div>
+
+        <button
+          type="button"
+          class="rsvp-main-button"
+          onclick="openRSVPChoice(event)"
+        >
+          RSVP करा
+        </button>
+
       </div>
 
-
-      <a
-        class="map-button"
-        href="https://www.google.com/maps/search/?api=1&query=1483+Kirts+Blvd+Apt+206+Troy+MI+48084"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📍 Google Maps वर पहा
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- RSVP -->
+    <!-- FOOTER -->
 
-<section class="section rsvp-section">
+    <footer>
 
-  <div class="rsvp-card reveal">
+      <div class="footer-om">
+        ॥ श्री गणेशाय नमः ॥
+      </div>
 
-    <div class="rsvp-icon">
-      💌
-    </div>
+      <div class="footer-text">
+        गणपती बाप्पा मोरया 🙏
+      </div>
 
-    <h2 class="rsvp-title">
-      RSVP
-    </h2>
+    </footer>
 
-    <div class="rsvp-subtitle">
-      आपल्या उपस्थितीची कृपया नोंद करा.<br>
-      तुमची उपस्थिती आमच्यासाठी आनंदाची बाब आहे. 🙏
-    </div>
-
-    <button
-      type="button"
-      class="rsvp-main-button"
-      onclick="openRSVPChoice(event)"
-    >
-      RSVP करा
-    </button>
-
-  </div>
-
-</section>
+  </main>
 
 
-<!-- FOOTER -->
+  <!-- =========================================
+       RSVP CHOICE MODAL
+  ========================================= -->
 
-<footer>
+  <div
+    id="rsvpChoiceModal"
+    class="rsvp-modal"
+    onclick="closeOutside(event,'rsvpChoiceModal')"
+  >
 
-  <div class="footer-om">
-    ॥ श्री गणेशाय नमः ॥
-  </div>
-
-  <div class="footer-text">
-    गणपती बाप्पा मोरया 🙏
-  </div>
-
-</footer>
-
-
-</main>
-
-
-<!-- ==================================================
-     RSVP CHOICE
-================================================== -->
-
-<div
-  id="rsvpChoiceModal"
-  class="rsvp-modal"
-  onclick="closeOutside(event,'rsvpChoiceModal')"
->
-
-  <div class="modal-box">
-
-    <button
-      type="button"
-      class="close-button"
-      onclick="closeModal('rsvpChoiceModal')"
-    >
-      ×
-    </button>
-
-    <div class="modal-icon">
-      💌
-    </div>
-
-    <h2 class="modal-title">
-      RSVP
-    </h2>
-
-    <div class="modal-subtitle">
-      आपण कार्यक्रमाला उपस्थित राहणार आहात का?
-    </div>
-
-    <div class="choice-buttons">
+    <div class="modal-box">
 
       <button
         type="button"
-        class="choice-button yes-choice"
-        onclick="openYesRSVP()"
+        class="close-button"
+        onclick="closeModal('rsvpChoiceModal')"
       >
-        🙏 होय
+        ×
       </button>
-
-      <button
-        type="button"
-        class="choice-button no-choice"
-        onclick="openNoRSVP()"
-      >
-        नंतर / नाही
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- ==================================================
-     YES RSVP
-================================================== -->
-
-<div
-  id="yesRSVPModal"
-  class="rsvp-modal"
-  onclick="closeOutside(event,'yesRSVPModal')"
->
-
-  <div class="modal-box">
-
-    <button
-      type="button"
-      class="close-button"
-      onclick="closeModal('yesRSVPModal')"
-    >
-      ×
-    </button>
-
-
-    <div id="yesFormContainer">
 
       <div class="modal-icon">
-        🙏
+        💌
       </div>
 
       <h2 class="modal-title">
-        उपस्थिती नोंदवा
+        RSVP
       </h2>
 
       <div class="modal-subtitle">
-        कृपया खालील माहिती भरा.
+        आपण कार्यक्रमाला उपस्थित राहणार आहात का?
       </div>
 
-
-      <form
-        id="yesRSVPForm"
-        class="rsvp-form"
-        onsubmit="submitYesRSVP(event)"
-      >
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="yesName"
-          >
-            तुमचे नाव
-          </label>
-
-          <input
-            id="yesName"
-            class="rsvp-input"
-            type="text"
-            placeholder="तुमचे नाव"
-            maxlength="100"
-            autocomplete="name"
-            required
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="yesEmail"
-          >
-            Email
-          </label>
-
-          <input
-            id="yesEmail"
-            class="rsvp-input"
-            type="email"
-            placeholder="your@email.com"
-            maxlength="150"
-            autocomplete="email"
-            required
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="yesGuests"
-          >
-            Total Guests
-          </label>
-
-          <input
-            id="yesGuests"
-            class="rsvp-input"
-            type="number"
-            min="1"
-            max="50"
-            placeholder="उदा. 4"
-            required
-          >
-
-        </div>
-
+      <div class="choice-buttons">
 
         <button
-          id="yesSubmitButton"
-          class="submit-button"
-          type="submit"
+          type="button"
+          class="choice-button yes-choice"
+          onclick="openYesRSVP()"
         >
-          उपस्थिती नोंदवा
+          🙏 होय
         </button>
 
-      </form>
+        <button
+          type="button"
+          class="choice-button no-choice"
+          onclick="openNoRSVP()"
+        >
+          नंतर / नाही
+        </button>
+
+      </div>
 
     </div>
 
+  </div>
 
-    <div
-      id="yesSuccess"
-      class="success"
-    >
 
-      <div class="success-icon">
-        🎉
-      </div>
+  <!-- =========================================
+       YES RSVP MODAL
+  ========================================= -->
 
-      <div class="success-title">
-        धन्यवाद!
-      </div>
+  <div
+    id="yesRSVPModal"
+    class="rsvp-modal"
+    onclick="closeOutside(event,'yesRSVPModal')"
+  >
 
-      <div class="success-text">
-        तुमची उपस्थिती यशस्वीरीत्या नोंदवली आहे. 🙏<br>
-        गणपती बाप्पा मोरया!
-      </div>
+    <div class="modal-box">
+
 
       <button
         type="button"
-        class="success-close"
+        class="close-button"
         onclick="closeModal('yesRSVPModal')"
       >
-        बंद करा
+        ×
       </button>
 
-    </div>
 
-  </div>
+      <div id="yesFormContainer">
 
-</div>
+        <div class="modal-icon">
+          🙏
+        </div>
 
+        <h2 class="modal-title">
+          उपस्थिती नोंदवा
+        </h2>
 
-<!-- ==================================================
-     NO RSVP
-================================================== -->
-
-<div
-  id="noRSVPModal"
-  class="rsvp-modal"
-  onclick="closeOutside(event,'noRSVPModal')"
->
-
-  <div class="modal-box">
-
-    <button
-      type="button"
-      class="close-button"
-      onclick="closeModal('noRSVPModal')"
-    >
-      ×
-    </button>
-
-
-    <div id="noFormContainer">
-
-      <div class="modal-icon">
-        🙏
-      </div>
-
-      <h2 class="modal-title">
-        कळवल्याबद्दल धन्यवाद
-      </h2>
-
-      <div class="modal-subtitle">
-        आपण उपस्थित राहू शकत नसल्यास कृपया आपले नाव नोंदवा.
-      </div>
-
-
-      <form
-        id="noRSVPForm"
-        class="rsvp-form"
-        onsubmit="submitNoRSVP(event)"
-      >
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="noName"
-          >
-            तुमचे नाव
-          </label>
-
-          <input
-            id="noName"
-            class="rsvp-input"
-            type="text"
-            placeholder="तुमचे नाव"
-            maxlength="100"
-            autocomplete="name"
-            required
-          >
-
+        <div class="modal-subtitle">
+          कृपया खालील माहिती भरा.
         </div>
 
 
-        <button
-          id="noSubmitButton"
-          class="submit-button"
-          type="submit"
+        <form
+          id="yesRSVPForm"
+          class="rsvp-form"
+          onsubmit="submitYesRSVP(event)"
         >
-          Respond करा
+
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="yesName"
+            >
+              तुमचे नाव
+            </label>
+
+            <input
+              id="yesName"
+              class="rsvp-input"
+              type="text"
+              placeholder="तुमचे नाव"
+              maxlength="100"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="yesEmail"
+            >
+              Email
+            </label>
+
+            <input
+              id="yesEmail"
+              class="rsvp-input"
+              type="email"
+              placeholder="your@email.com"
+              maxlength="150"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="yesGuests"
+            >
+              Total Guests
+            </label>
+
+            <input
+              id="yesGuests"
+              class="rsvp-input"
+              type="number"
+              min="1"
+              max="50"
+              placeholder="उदा. 4"
+              required
+            >
+
+          </div>
+
+
+          <button
+            id="yesSubmitButton"
+            class="submit-button"
+            type="submit"
+          >
+            उपस्थिती नोंदवा
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- YES SUCCESS -->
+
+      <div
+        id="yesSuccess"
+        class="success"
+      >
+
+        <div class="success-icon">
+          🎉
+        </div>
+
+        <div class="success-title">
+          धन्यवाद!
+        </div>
+
+        <div class="success-text">
+          तुमची उपस्थिती यशस्वीरीत्या नोंदवली आहे. 🙏<br>
+          गणपती बाप्पा मोरया!
+        </div>
+
+        <button
+          type="button"
+          class="success-close"
+          onclick="closeModal('yesRSVPModal')"
+        >
+          बंद करा
         </button>
 
-      </form>
-
-    </div>
-
-
-    <div
-      id="noSuccess"
-      class="success"
-    >
-
-      <div class="success-icon">
-        🙏
       </div>
-
-      <div class="success-title">
-        धन्यवाद!
-      </div>
-
-      <div class="success-text">
-        तुमचा प्रतिसाद नोंदवला आहे.
-      </div>
-
-      <button
-        type="button"
-        class="success-close"
-        onclick="closeModal('noRSVPModal')"
-      >
-        बंद करा
-      </button>
 
     </div>
 
   </div>
 
-</div>
+
+  <!-- =========================================
+       NO RSVP MODAL
+  ========================================= -->
+
+  <div
+    id="noRSVPModal"
+    class="rsvp-modal"
+    onclick="closeOutside(event,'noRSVPModal')"
+  >
+
+    <div class="modal-box">
 
 
-<!-- ==================================================
-     HIDDEN IFRAME
-     
-     This receives the Apps Script response
-     without leaving the invitation page.
-================================================== -->
-
-<iframe
-  name="rsvpSubmitFrame"
-  style="display:none;"
-></iframe>
+      <button
+        type="button"
+        class="close-button"
+        onclick="closeModal('noRSVPModal')"
+      >
+        ×
+      </button>
 
 
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
+      <div id="noFormContainer">
 
-<script>
+        <div class="modal-icon">
+          🙏
+        </div>
 
+        <h2 class="modal-title">
+          कळवल्याबद्दल धन्यवाद
+        </h2>
 
-/* ==================================================
-   GOOGLE APPS SCRIPT URL
-================================================== */
-
-const RSVP_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzqlH_XhGEwwVKicLJPXkld2-tzvGEDfaJU9hqJbEqNMPEcw8xNVJox6ufAqdFl9gdr/exec";
-
-
-/* ==================================================
-   OPEN INVITATION
-================================================== */
-
-function openInvitation() {
-
-  const intro =
-    document.getElementById("intro");
-
-  const invitation =
-    document.getElementById("invitation");
+        <div class="modal-subtitle">
+          आपण उपस्थित राहू शकत नसल्यास कृपया आपले नाव नोंदवा.
+        </div>
 
 
-  intro.style.opacity = "0";
+        <form
+          id="noRSVPForm"
+          class="rsvp-form"
+          onsubmit="submitNoRSVP(event)"
+        >
 
-  intro.style.transform =
-    "scale(1.04)";
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="noName"
+            >
+              तुमचे नाव
+            </label>
+
+            <input
+              id="noName"
+              class="rsvp-input"
+              type="text"
+              placeholder="तुमचे नाव"
+              maxlength="100"
+              autocomplete="name"
+              required
+            >
+
+          </div>
 
 
-  setTimeout(function() {
+          <button
+            id="noSubmitButton"
+            class="submit-button"
+            type="submit"
+          >
+            Respond करा
+          </button>
 
-    intro.style.display = "none";
+        </form>
 
-    invitation.style.display =
-      "block";
+      </div>
 
-    window.scrollTo(0,0);
+
+      <!-- NO SUCCESS -->
+
+      <div
+        id="noSuccess"
+        class="success"
+      >
+
+        <div class="success-icon">
+          🙏
+        </div>
+
+        <div class="success-title">
+          धन्यवाद!
+        </div>
+
+        <div class="success-text">
+          तुमचा प्रतिसाद नोंदवला आहे.
+        </div>
+
+        <button
+          type="button"
+          class="success-close"
+          onclick="closeModal('noRSVPModal')"
+        >
+          बंद करा
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script>
+
+
+    /* =========================================
+       YOUR WORKING GOOGLE APPS SCRIPT URL
+    ========================================= */
+
+    const RSVP_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzqlH_XhGEwwVKicLJPXkld2-tzvGEDfaJU9hqJbEqNMPEcw8xNVJox6ufAqdFl9gdr/exec";
+
+
+    /* =========================================
+       OPEN INVITATION
+    ========================================= */
+
+    function openInvitation() {
+
+      const intro =
+        document.getElementById("intro");
+
+      const invitation =
+        document.getElementById("invitation");
+
+
+      intro.style.opacity = "0";
+
+      intro.style.transform =
+        "scale(1.04)";
+
+
+      setTimeout(() => {
+
+        intro.style.display = "none";
+
+        invitation.style.display = "block";
+
+        window.scrollTo(0,0);
+
+        document
+          .querySelectorAll(".reveal,.scale-in")
+          .forEach(el => {
+
+            el.classList.add("show");
+
+          });
+
+      }, 850);
+
+    }
+
+
+    /* =========================================
+       SCROLL ANIMATIONS
+    ========================================= */
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: .15
+        }
+
+      );
 
 
     document
-      .querySelectorAll(
-        ".reveal,.scale-in"
-      )
-      .forEach(function(el) {
+      .querySelectorAll(".reveal,.scale-in")
+      .forEach(el => {
 
-        el.classList.add("show");
+        observer.observe(el);
 
       });
 
-  },850);
 
-}
+    /* =========================================
+       OPEN RSVP CHOICE
+    ========================================= */
 
+    function openRSVPChoice(event) {
 
-/* ==================================================
-   SCROLL ANIMATION
-================================================== */
+      if (event) {
+        event.stopPropagation();
+      }
 
-const observer =
-  new IntersectionObserver(
+      document
+        .getElementById("rsvpChoiceModal")
+        .classList.add("active");
 
-    function(entries) {
+      document.body.style.overflow =
+        "hidden";
 
-      entries.forEach(
-        function(entry) {
-
-          if (
-            entry.isIntersecting
-          ) {
-
-            entry.target
-              .classList
-              .add("show");
-
-          }
-
-        }
-      );
-
-    },
-
-    {
-      threshold: .15
     }
 
-  );
 
+    /* =========================================
+       OPEN YES
+    ========================================= */
 
-document
-  .querySelectorAll(
-    ".reveal,.scale-in"
-  )
-  .forEach(function(el) {
+    function openYesRSVP() {
 
-    observer.observe(el);
+      closeModal("rsvpChoiceModal");
 
-  });
+      resetYesForm();
 
+      document
+        .getElementById("yesRSVPModal")
+        .classList.add("active");
 
-/* ==================================================
-   OPEN RSVP CHOICE
-================================================== */
-
-function openRSVPChoice(event) {
-
-  if (event) {
-    event.stopPropagation();
-  }
-
-  document
-    .getElementById(
-      "rsvpChoiceModal"
-    )
-    .classList
-    .add("active");
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==================================================
-   OPEN YES
-================================================== */
-
-function openYesRSVP() {
-
-  closeModal(
-    "rsvpChoiceModal"
-  );
-
-  resetYesForm();
-
-  document
-    .getElementById(
-      "yesRSVPModal"
-    )
-    .classList
-    .add("active");
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==================================================
-   OPEN NO
-================================================== */
-
-function openNoRSVP() {
-
-  closeModal(
-    "rsvpChoiceModal"
-  );
-
-  resetNoForm();
-
-  document
-    .getElementById(
-      "noRSVPModal"
-    )
-    .classList
-    .add("active");
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==================================================
-   CLOSE MODAL
-================================================== */
-
-function closeModal(id) {
-
-  const modal =
-    document.getElementById(id);
-
-  if (modal) {
-
-    modal.classList.remove(
-      "active"
-    );
-
-  }
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-/* ==================================================
-   CLOSE WHEN CLICKING OUTSIDE
-================================================== */
-
-function closeOutside(event,id) {
-
-  if (
-    event.target.id === id
-  ) {
-
-    closeModal(id);
-
-  }
-
-}
-
-
-/* ==================================================
-   CREATE AND SUBMIT HIDDEN FORM
-================================================== */
-
-function sendRSVP(data) {
-
-  const form =
-    document.createElement("form");
-
-
-  form.method = "POST";
-
-  form.action =
-    RSVP_SCRIPT_URL;
-
-  form.target =
-    "rsvpSubmitFrame";
-
-  form.style.display =
-    "none";
-
-
-  Object.keys(data).forEach(
-    function(key) {
-
-      const input =
-        document.createElement(
-          "input"
-        );
-
-      input.type = "hidden";
-
-      input.name = key;
-
-      input.value =
-        data[key];
-
-      form.appendChild(
-        input
-      );
+      document.body.style.overflow =
+        "hidden";
 
     }
-  );
 
 
-  document.body.appendChild(
-    form
-  );
+    /* =========================================
+       OPEN NO
+    ========================================= */
+
+    function openNoRSVP() {
+
+      closeModal("rsvpChoiceModal");
+
+      resetNoForm();
+
+      document
+        .getElementById("noRSVPModal")
+        .classList.add("active");
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
 
 
-  form.submit();
+    /* =========================================
+       CLOSE MODAL
+    ========================================= */
 
+    function closeModal(id) {
 
-  /*
-     Remove the temporary form
-     after the request has been
-     sent to Apps Script.
-  */
+      const modal =
+        document.getElementById(id);
 
-  setTimeout(
-    function() {
+      if (modal) {
 
-      if (form.parentNode) {
-
-        form.parentNode
-          .removeChild(form);
+        modal.classList.remove("active");
 
       }
 
-    },
-    3000
-  );
+      document.body.style.overflow =
+        "";
 
-}
-
-
-/* ==================================================
-   YES RSVP
-================================================== */
-
-function submitYesRSVP(event) {
-
-  event.preventDefault();
+    }
 
 
-  const name =
-    document
-      .getElementById(
-        "yesName"
-      )
-      .value
-      .trim();
+    /* =========================================
+       CLICK OUTSIDE MODAL
+    ========================================= */
+
+    function closeOutside(event,id) {
+
+      if (event.target.id === id) {
+
+        closeModal(id);
+
+      }
+
+    }
 
 
-  const email =
-    document
-      .getElementById(
-        "yesEmail"
-      )
-      .value
-      .trim();
+    /* =========================================
+       SEND RSVP
+       
+       Uses standard fetch with no-cors mode
+       to directly transmit form data to Apps Script.
+    ========================================= */
+
+    async function sendRSVP(data) {
+
+      const payload = new URLSearchParams();
+
+      Object.keys(data).forEach(key => {
+        payload.append(key, data[key]);
+      });
+
+      await fetch(RSVP_SCRIPT_URL, {
+        method: "POST",
+        body: payload,
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
+
+    }
 
 
-  const guests =
-    document
-      .getElementById(
-        "yesGuests"
-      )
-      .value
-      .trim();
+    /* =========================================
+       YES RSVP SUBMISSION
+    ========================================= */
+
+    async function submitYesRSVP(event) {
+
+      event.preventDefault();
 
 
-  if (
-    !name ||
-    !email ||
-    !guests
-  ) {
-
-    alert(
-      "कृपया सर्व माहिती भरा."
-    );
-
-    return;
-
-  }
+      const name =
+        document
+          .getElementById("yesName")
+          .value
+          .trim();
 
 
-  const button =
-    document.getElementById(
-      "yesSubmitButton"
-    );
+      const email =
+        document
+          .getElementById("yesEmail")
+          .value
+          .trim();
 
 
-  button.disabled = true;
-
-  button.textContent =
-    "Saving...";
-
-
-  sendRSVP({
-
-    response: "YES",
-
-    name: name,
-
-    email: email,
-
-    guests: guests
-
-  });
+      const guests =
+        document
+          .getElementById("yesGuests")
+          .value;
 
 
-  /*
-     Show success after giving
-     Apps Script time to process.
-  */
+      if (
+        !name ||
+        !email ||
+        !guests
+      ) {
 
-  setTimeout(
-    function() {
+        alert(
+          "कृपया सर्व माहिती भरा."
+        );
 
-      document
-        .getElementById(
-          "yesFormContainer"
-        )
-        .style.display =
-        "none";
+        return;
+
+      }
 
 
-      document
-        .getElementById(
-          "yesSuccess"
-        )
-        .classList
-        .add("show");
+      const button =
+        document.getElementById(
+          "yesSubmitButton"
+        );
+
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        "Saving...";
+
+
+      try {
+
+
+        await sendRSVP({
+
+          response: "YES",
+
+          name: name,
+
+          email: email,
+
+          guests: guests
+
+        });
+
+
+        document
+          .getElementById(
+            "yesFormContainer"
+          )
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById(
+            "yesSuccess"
+          )
+          .classList.add(
+            "show"
+          );
+
+
+      } catch(error) {
+
+
+        console.error(
+          error
+        );
+
+
+        alert(
+          "काहीतरी समस्या आली. कृपया पुन्हा प्रयत्न करा."
+        );
+
+      }
 
 
       button.disabled =
@@ -2111,84 +2058,95 @@ function submitYesRSVP(event) {
       button.textContent =
         "उपस्थिती नोंदवा";
 
-    },
-    1800
-  );
-
-}
+    }
 
 
-/* ==================================================
-   NO RSVP
-================================================== */
+    /* =========================================
+       NO RSVP SUBMISSION
+    ========================================= */
 
-function submitNoRSVP(event) {
+    async function submitNoRSVP(event) {
 
-  event.preventDefault();
-
-
-  const name =
-    document
-      .getElementById(
-        "noName"
-      )
-      .value
-      .trim();
+      event.preventDefault();
 
 
-  if (!name) {
-
-    alert(
-      "कृपया आपले नाव भरा."
-    );
-
-    return;
-
-  }
+      const name =
+        document
+          .getElementById("noName")
+          .value
+          .trim();
 
 
-  const button =
-    document.getElementById(
-      "noSubmitButton"
-    );
+      if (!name) {
+
+        alert(
+          "कृपया आपले नाव भरा."
+        );
+
+        return;
+
+      }
 
 
-  button.disabled = true;
-
-  button.textContent =
-    "Saving...";
-
-
-  sendRSVP({
-
-    response: "NO",
-
-    name: name,
-
-    email: "",
-
-    guests: "0"
-
-  });
+      const button =
+        document.getElementById(
+          "noSubmitButton"
+        );
 
 
-  setTimeout(
-    function() {
+      button.disabled =
+        true;
 
-      document
-        .getElementById(
-          "noFormContainer"
-        )
-        .style.display =
-        "none";
+      button.textContent =
+        "Saving...";
 
 
-      document
-        .getElementById(
-          "noSuccess"
-        )
-        .classList
-        .add("show");
+      try {
+
+
+        await sendRSVP({
+
+          response: "NO",
+
+          name: name,
+
+          email: "",
+
+          guests: "0"
+
+        });
+
+
+        document
+          .getElementById(
+            "noFormContainer"
+          )
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById(
+            "noSuccess"
+          )
+          .classList.add(
+            "show"
+          );
+
+
+      } catch(error) {
+
+
+        console.error(
+          error
+        );
+
+
+        alert(
+          "काहीतरी समस्या आली. कृपया पुन्हा प्रयत्न करा."
+        );
+
+      }
 
 
       button.disabled =
@@ -2197,106 +2155,104 @@ function submitNoRSVP(event) {
       button.textContent =
         "Respond करा";
 
-    },
-    1800
-  );
-
-}
+    }
 
 
-/* ==================================================
-   RESET YES FORM
-================================================== */
+    /* =========================================
+       RESET YES FORM
+    ========================================= */
 
-function resetYesForm() {
+    function resetYesForm() {
 
-  document
-    .getElementById(
-      "yesRSVPForm"
-    )
-    .reset();
-
-
-  document
-    .getElementById(
-      "yesFormContainer"
-    )
-    .style.display =
-    "block";
+      document
+        .getElementById(
+          "yesRSVPForm"
+        )
+        .reset();
 
 
-  document
-    .getElementById(
-      "yesSuccess"
-    )
-    .classList
-    .remove("show");
-
-}
+      document
+        .getElementById(
+          "yesFormContainer"
+        )
+        .style.display =
+        "block";
 
 
-/* ==================================================
-   RESET NO FORM
-================================================== */
-
-function resetNoForm() {
-
-  document
-    .getElementById(
-      "noRSVPForm"
-    )
-    .reset();
-
-
-  document
-    .getElementById(
-      "noFormContainer"
-    )
-    .style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "noSuccess"
-    )
-    .classList
-    .remove("show");
-
-}
-
-
-/* ==================================================
-   ESC KEY
-================================================== */
-
-document.addEventListener(
-  "keydown",
-  function(event) {
-
-    if (
-      event.key === "Escape"
-    ) {
-
-      closeModal(
-        "rsvpChoiceModal"
-      );
-
-      closeModal(
-        "yesRSVPModal"
-      );
-
-      closeModal(
-        "noRSVPModal"
-      );
+      document
+        .getElementById(
+          "yesSuccess"
+        )
+        .classList.remove(
+          "show"
+        );
 
     }
 
-  }
-);
 
-</script>
+    /* =========================================
+       RESET NO FORM
+    ========================================= */
+
+    function resetNoForm() {
+
+      document
+        .getElementById(
+          "noRSVPForm"
+        )
+        .reset();
+
+
+      document
+        .getElementById(
+          "noFormContainer"
+        )
+        .style.display =
+        "block";
+
+
+      document
+        .getElementById(
+          "noSuccess"
+        )
+        .classList.remove(
+          "show"
+        );
+
+    }
+
+
+    /* =========================================
+       ESC KEY
+    ========================================= */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeModal(
+            "rsvpChoiceModal"
+          );
+
+          closeModal(
+            "yesRSVPModal"
+          );
+
+          closeModal(
+            "noRSVPModal"
+          );
+
+        }
+
+      }
+    );
+
+
+  </script>
 
 </body>
 </html>
-```
