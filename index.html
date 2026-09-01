@@ -24,8 +24,11 @@
     body {
       background: #1a0303;
       color: #fff0c7;
-      font-family: "Noto Serif Devanagari", serif;
+      font-family: "Noto Serif Devanagari", "Yatra One", "Arial Unicode MS", serif;
       overflow-x: hidden;
+      /* Add these two lines to fix Devanagari font breaking globally */
+      font-feature-settings: "liga" 1, "dlig" 1;
+      text-rendering: optimizeLegibility;
     }
 
     /* =========================================
@@ -341,6 +344,10 @@
 
     <div class="top-heading">
       ॥ श्री गणेशाय नमः ॥
+    </div>
+
+    <div class="top-heading">
+      &#2405; &#2358;&#2381;&#2352;&#2368; &#2327;&#2339;&#2359;&#2362;&#2351; &#2344;&#2350;&#2381;: &#2405;
     </div>
 
     <div class="wax-seal-wrapper">
