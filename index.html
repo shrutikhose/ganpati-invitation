@@ -1923,8 +1923,8 @@
     /* =========================================
        SEND RSVP
        
-       Uses standard fetch with no-cors mode
-       to directly transmit form data to Apps Script.
+       Sends URLSearchParams via POST mode 'no-cors'
+       to deliver payload properly to Apps Script.
     ========================================= */
 
     async function sendRSVP(data) {
@@ -1937,11 +1937,11 @@
 
       await fetch(RSVP_SCRIPT_URL, {
         method: "POST",
-        body: payload,
         mode: "no-cors",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
-        }
+        },
+        body: payload.toString()
       });
 
     }
