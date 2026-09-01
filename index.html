@@ -6,7 +6,6 @@
 
   <title>बाप्पाचे आगमन | Bhokare परिवार</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -16,10 +15,6 @@
   >
 
   <style>
-
-    /* =========================================
-       BASIC RESET
-    ========================================= */
 
     * {
       margin: 0;
@@ -43,139 +38,437 @@
       --dark: #160603;
       --dark-red: #350604;
       --red: #690b07;
-      --red-light: #8f1710;
       --gold: #d9a441;
       --gold-light: #f5d681;
       --cream: #fff1c9;
       --muted: #e5c78c;
     }
 
-    button,
-    input {
-      font-family: inherit;
-    }
 
-
-    /* =========================================
-       INTRO SCREEN (ENVELOPE / WAX SEAL DESIGN)
-    ========================================= */
+    /* ==================================================
+       OPENING SCREEN
+    ================================================== */
 
     #intro {
       min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+      width: 100%;
+
       position: relative;
-      cursor: pointer;
-      background: #f4eee3;
-      background-image: radial-gradient(#e0d6c3 1px, transparent 1px);
-      background-size: 20px 20px;
-      padding: 60px 20px 40px;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       overflow: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(255,255,255,0.98) 0%,
+          rgba(248,244,232,0.98) 52%,
+          rgba(235,226,207,1) 100%
+        );
+
+      transition:
+        opacity 1s ease,
+        transform 1s ease;
     }
 
-    /* Vertical Center Seam */
+
+    /* Paper texture */
+
     #intro::before {
       content: "";
+
       position: absolute;
+
+      inset: 0;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(150,125,80,.025) 0px,
+          rgba(150,125,80,.025) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+
+      pointer-events: none;
+
+      opacity: .8;
+    }
+
+
+    /* Center gold line */
+
+    #intro::after {
+      content: "";
+
+      position: absolute;
+
       top: 0;
       bottom: 0;
+
       left: 50%;
+
       width: 2px;
-      background: linear-gradient(180deg, #c39a48, #e8c878, #c39a48);
+
       transform: translateX(-50%);
-      box-shadow: 0 0 4px rgba(180, 130, 40, 0.4);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(150,105,30,.65),
+          #c99b3b,
+          #f2d58a,
+          #b98324,
+          rgba(150,105,30,.65)
+        );
+
+      box-shadow:
+        0 0 4px rgba(150,105,30,.25);
+
       z-index: 1;
     }
 
-    /* Top Heading */
-    .top-heading {
-      position: relative;
-      z-index: 2;
-      font-family: "Yatra One", serif;
-      font-size: clamp(20px, 5vw, 26px);
-      color: #7a1d1d;
-      letter-spacing: 2px;
-      background: #f4eee3;
-      padding: 6px 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(195, 154, 72, 0.5);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
 
-    /* Central Gold Wax Seal */
-    .wax-seal-wrapper {
-      position: relative;
-      z-index: 2;
-      margin: auto 0;
-    }
+    /* ==================================================
+       OPENING TOP TEXT
+    ================================================== */
 
-    .wax-seal {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fbe396, #d49e35 50%, #8a5d12 90%);
-      border: 3px solid #fbe396;
-      box-shadow: 
-        0 10px 25px rgba(0, 0, 0, 0.3),
-        inset 0 0 15px rgba(255, 255, 255, 0.6),
-        inset 0 -5px 12px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .intro-top {
+
+      position: absolute;
+
+      top: 7%;
+
+      left: 0;
+      right: 0;
+
+      z-index: 5;
+
       text-align: center;
-      padding: 10px;
-      animation: pulseGlow 2.5s infinite ease-in-out;
+
+      color: #9b6c20;
+
+      font-family:
+        "Noto Serif Devanagari",
+        serif;
+
+      font-size:
+        clamp(17px, 4.5vw, 25px);
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 1px 1px rgba(255,255,255,.8);
     }
 
-    .wax-seal-inner {
-      width: 116px;
-      height: 116px;
-      border-radius: 50%;
-      border: 1.5px dashed #6b4307;
+
+    .intro-top::before,
+    .intro-top::after {
+
+      content: "";
+
+      display: inline-block;
+
+      vertical-align: middle;
+
+      width: 38px;
+
+      height: 1px;
+
+      margin: 0 10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #c49a45
+        );
+    }
+
+
+    .intro-top::after {
+
+      background:
+        linear-gradient(
+          90deg,
+          #c49a45,
+          transparent
+        );
+    }
+
+
+    /* ==================================================
+       OPENING CONTENT
+    ================================================== */
+
+    .intro-content {
+
+      position: relative;
+
+      z-index: 5;
+
+      width: 100%;
+
+      height: 100%;
+
       display: flex;
-      flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
     }
+
+
+    /* ==================================================
+       GOLD TAP TO OPEN SEAL
+    ================================================== */
+
+    .tap-seal {
+
+      width:
+        clamp(175px, 48vw, 235px);
+
+      height:
+        clamp(175px, 48vw, 235px);
+
+      border-radius: 50%;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      border: none;
+
+      outline: none;
+
+      background:
+
+        radial-gradient(
+          circle at 35% 28%,
+          #fff0ad 0%,
+          #e8bd58 18%,
+          #b77a1d 48%,
+          #e0ae42 70%,
+          #8d5912 100%
+        );
+
+      box-shadow:
+
+        0 12px 30px
+          rgba(82,53,12,.35),
+
+        inset 0 3px 5px
+          rgba(255,255,255,.65),
+
+        inset 0 -6px 10px
+          rgba(75,43,5,.38);
+
+      animation:
+        sealFloat 3s ease-in-out infinite;
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+
+    /* Outer rings */
+
+    .tap-seal::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 10px;
+
+      border-radius: 50%;
+
+      border:
+        2px solid
+        rgba(255,238,175,.75);
+
+      box-shadow:
+
+        inset 0 0 0 3px
+          rgba(119,73,8,.55),
+
+        inset 0 0 0 6px
+          rgba(248,213,123,.65);
+    }
+
+
+    /* Inner ring */
+
+    .tap-seal::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 23px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(255,239,181,.8);
+
+      box-shadow:
+        inset 0 0 15px
+          rgba(81,48,5,.25);
+    }
+
+
+    .tap-seal-content {
+
+      position: relative;
+
+      z-index: 4;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      color: #5b390b;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      text-shadow:
+        0 1px 0
+        rgba(255,235,163,.6);
+    }
+
+
+    .seal-symbol {
+
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(25px, 7vw, 36px);
+
+      line-height: 1;
+    }
+
+
+    .seal-divider {
+
+      width: 55px;
+
+      height: 1px;
+
+      background: #6f450d;
+
+      opacity: .75;
+    }
+
 
     .seal-text {
-      font-family: "Noto Serif Devanagari", serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: #4a2d02;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-      line-height: 1.3;
-    }
 
-    @keyframes pulseGlow {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.6);
-      }
-      50% {
-        transform: scale(1.04);
-        box-shadow: 0 14px 30px rgba(212, 158, 53, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.8);
-      }
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(18px, 5vw, 25px);
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+
+      line-height: 1.25;
     }
 
 
-    /* =========================================
-       MAIN INVITATION
-    ========================================= */
+    .tap-seal:hover {
+
+      transform: scale(1.04);
+
+      box-shadow:
+
+        0 18px 38px
+          rgba(82,53,12,.42),
+
+        inset 0 3px 5px
+          rgba(255,255,255,.7),
+
+        inset 0 -6px 10px
+          rgba(75,43,5,.38);
+    }
+
+
+    .tap-seal:active {
+
+      transform: scale(.96);
+    }
+
+
+    /* ==================================================
+       OPENING BOTTOM
+    ================================================== */
+
+    .intro-bottom {
+
+      position: absolute;
+
+      bottom: 7%;
+
+      left: 0;
+      right: 0;
+
+      z-index: 5;
+
+      text-align: center;
+
+      color: #a4782d;
+
+      font-family:
+        "Noto Serif Devanagari",
+        serif;
+
+      font-size: 12px;
+
+      letter-spacing: 3px;
+    }
+
+
+    /* ==================================================
+       INVITATION
+    ================================================== */
 
     #invitation {
+
       display: none;
 
       background:
         radial-gradient(
           circle at top,
-          rgba(213, 115, 24, .22),
+          rgba(213,115,24,.22),
           transparent 38%
         ),
         linear-gradient(
@@ -186,12 +479,15 @@
         );
     }
 
+
     .section {
+
       min-height: 100svh;
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
@@ -201,7 +497,9 @@
       position: relative;
     }
 
+
     .section-inner {
+
       width: min(100%, 520px);
 
       position: relative;
@@ -210,40 +508,54 @@
     }
 
 
-    /* =========================================
+    /* ==================================================
        HERO
-    ========================================= */
+    ================================================== */
 
     .hero {
+
       min-height: 100svh;
     }
 
+
     .hero::before {
+
       content: "";
 
       position: absolute;
 
       inset: 15px;
 
-      border: 1px solid rgba(245,214,129,.35);
+      border:
+        1px solid rgba(245,214,129,.35);
 
       border-radius: 22px;
     }
 
+
     .ganesh-symbol {
-      font-family: "Yatra One", serif;
+
+      font-family:
+        "Yatra One",
+        serif;
 
       font-size: 50px;
 
       color: var(--gold-light);
 
-      animation: floating 4s ease-in-out infinite;
+      animation:
+        floating 4s ease-in-out infinite;
     }
 
-    .hero-title {
-      font-family: "Yatra One", serif;
 
-      font-size: clamp(48px, 13vw, 75px);
+    .hero-title {
+
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(48px, 13vw, 75px);
 
       line-height: 1.25;
 
@@ -255,27 +567,35 @@
       margin-top: 10px;
     }
 
+
     .hero-subtitle {
+
       margin-top: 20px;
 
-      font-size: clamp(18px, 4.5vw, 24px);
+      font-size:
+        clamp(18px, 4.5vw, 24px);
 
       line-height: 1.9;
 
       color: var(--cream);
     }
 
+
     .family-name {
+
       margin-top: 28px;
 
-      font-size: clamp(23px, 6vw, 31px);
+      font-size:
+        clamp(23px, 6vw, 31px);
 
       font-weight: 600;
 
       color: #fff0c7;
     }
 
+
     .invite-text {
+
       margin-top: 8px;
 
       color: var(--muted);
@@ -283,7 +603,9 @@
       font-size: 18px;
     }
 
+
     .scroll-hint {
+
       position: absolute;
 
       bottom: 25px;
@@ -298,28 +620,36 @@
 
       letter-spacing: 3px;
 
-      animation: bounce 2s infinite;
+      animation:
+        bounce 2s infinite;
     }
 
 
-    /* =========================================
-       GANPATI SECTION
-    ========================================= */
+    /* ==================================================
+       GANPATI
+    ================================================== */
 
     .section-heading {
-      font-family: "Yatra One", serif;
 
-      font-size: clamp(40px, 10vw, 58px);
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(40px, 10vw, 58px);
 
       color: var(--gold-light);
 
       margin-bottom: 25px;
     }
 
+
     .heading-line {
+
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 12px;
@@ -327,7 +657,9 @@
       margin-bottom: 18px;
     }
 
+
     .heading-line span {
+
       width: 55px;
 
       height: 1px;
@@ -335,25 +667,32 @@
       background: var(--gold);
     }
 
+
     .ganpati-frame {
-      width: min(90vw, 420px);
+
+      width:
+        min(90vw, 420px);
 
       margin: 0 auto;
 
       padding: 10px;
 
-      border: 1px solid rgba(245,214,129,.7);
+      border:
+        1px solid rgba(245,214,129,.7);
 
       border-radius:
         220px 220px 25px 25px;
 
-      background: rgba(0,0,0,.12);
+      background:
+        rgba(0,0,0,.12);
 
       box-shadow:
         0 20px 65px rgba(0,0,0,.35);
     }
 
+
     .ganpati-image {
+
       display: block;
 
       width: 100%;
@@ -366,7 +705,9 @@
         210px 210px 18px 18px;
     }
 
+
     .family-card {
+
       margin: 30px auto 0;
 
       padding: 25px 18px;
@@ -378,15 +719,20 @@
         1px solid rgba(245,214,129,.5);
     }
 
+
     .family-card-main {
-      font-size: clamp(24px, 6vw, 32px);
+
+      font-size:
+        clamp(24px, 6vw, 32px);
 
       color: #fff0c7;
 
       font-weight: 600;
     }
 
+
     .family-card-sub {
+
       margin-top: 10px;
 
       color: var(--muted);
@@ -397,12 +743,14 @@
     }
 
 
-    /* =========================================
+    /* ==================================================
        MAHA AARTI
-    ========================================= */
+    ================================================== */
 
     .event-card {
-      width: min(100%, 470px);
+
+      width:
+        min(100%, 470px);
 
       padding: 48px 25px;
 
@@ -422,21 +770,30 @@
         0 20px 60px rgba(0,0,0,.35);
     }
 
+
     .event-icon {
+
       font-size: 50px;
 
       margin-bottom: 12px;
     }
 
-    .event-title {
-      font-family: "Yatra One", serif;
 
-      font-size: clamp(40px, 10vw, 55px);
+    .event-title {
+
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(40px, 10vw, 55px);
 
       color: var(--gold-light);
     }
 
+
     .event-divider {
+
       width: 80px;
 
       height: 1px;
@@ -446,7 +803,9 @@
       margin: 25px auto;
     }
 
+
     .event-date {
+
       color: var(--cream);
 
       font-size: 21px;
@@ -454,7 +813,9 @@
       font-weight: 600;
     }
 
+
     .event-time {
+
       margin-top: 10px;
 
       color: var(--muted);
@@ -462,7 +823,9 @@
       font-size: 21px;
     }
 
+
     .event-note {
+
       margin-top: 20px;
 
       color: #d9bc7d;
@@ -473,25 +836,33 @@
     }
 
 
-    /* =========================================
+    /* ==================================================
        VENUE
-    ========================================= */
+    ================================================== */
 
     .venue-icon {
+
       font-size: 50px;
 
       margin-bottom: 12px;
     }
 
-    .venue-title {
-      font-family: "Yatra One", serif;
 
-      font-size: clamp(42px, 11vw, 60px);
+    .venue-title {
+
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(42px, 11vw, 60px);
 
       color: var(--gold-light);
     }
 
+
     .venue-name {
+
       margin-top: 30px;
 
       color: var(--cream);
@@ -501,7 +872,9 @@
       font-weight: 600;
     }
 
+
     .venue-address {
+
       margin-top: 12px;
 
       color: var(--muted);
@@ -511,10 +884,13 @@
       line-height: 1.9;
     }
 
+
     .map-button {
+
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 8px;
@@ -538,24 +914,31 @@
       transition: .3s ease;
     }
 
+
     .map-button:hover {
+
       background:
         rgba(217,164,65,.3);
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
     }
 
 
-    /* =========================================
-       RSVP SECTION
-    ========================================= */
+    /* ==================================================
+       RSVP
+    ================================================== */
 
     .rsvp-section {
+
       min-height: 70svh;
     }
 
+
     .rsvp-card {
-      width: min(100%, 500px);
+
+      width:
+        min(100%, 500px);
 
       padding: 48px 25px;
 
@@ -575,21 +958,30 @@
         0 20px 65px rgba(0,0,0,.35);
     }
 
+
     .rsvp-icon {
+
       font-size: 50px;
     }
 
-    .rsvp-title {
-      font-family: "Yatra One", serif;
 
-      font-size: clamp(43px, 11vw, 60px);
+    .rsvp-title {
+
+      font-family:
+        "Yatra One",
+        serif;
+
+      font-size:
+        clamp(43px, 11vw, 60px);
 
       color: var(--gold-light);
 
       margin-top: 5px;
     }
 
+
     .rsvp-subtitle {
+
       margin-top: 12px;
 
       color: var(--muted);
@@ -599,7 +991,9 @@
       line-height: 1.8;
     }
 
+
     .rsvp-main-button {
+
       margin-top: 30px;
 
       padding: 16px 45px;
@@ -621,19 +1015,23 @@
       transition: .3s ease;
     }
 
+
     .rsvp-main-button:hover {
-      transform: translateY(-3px);
+
+      transform:
+        translateY(-3px);
 
       background:
         rgba(217,164,65,.35);
     }
 
 
-    /* =========================================
-       MODALS
-    ========================================= */
+    /* ==================================================
+       MODAL
+    ================================================== */
 
     .rsvp-modal {
+
       position: fixed;
 
       inset: 0;
@@ -641,6 +1039,7 @@
       display: none;
 
       align-items: center;
+
       justify-content: center;
 
       padding: 20px;
@@ -653,15 +1052,20 @@
       z-index: 5000;
     }
 
+
     .rsvp-modal.active {
+
       display: flex;
 
       animation:
         modalFade .3s ease;
     }
 
+
     .modal-box {
-      width: min(100%, 430px);
+
+      width:
+        min(100%, 430px);
 
       max-height: 90vh;
 
@@ -689,13 +1093,17 @@
       position: relative;
     }
 
+
     .close-button {
+
       position: absolute;
 
       right: 14px;
+
       top: 12px;
 
       width: 38px;
+
       height: 38px;
 
       border-radius: 50%;
@@ -713,12 +1121,18 @@
       cursor: pointer;
     }
 
+
     .modal-icon {
+
       font-size: 44px;
     }
 
+
     .modal-title {
-      font-family: "Yatra One", serif;
+
+      font-family:
+        "Yatra One",
+        serif;
 
       font-size: 35px;
 
@@ -727,7 +1141,9 @@
       margin-top: 5px;
     }
 
+
     .modal-subtitle {
+
       margin-top: 8px;
 
       margin-bottom: 22px;
@@ -740,11 +1156,12 @@
     }
 
 
-    /* =========================================
-       CHOICE BUTTONS
-    ========================================= */
+    /* ==================================================
+       RSVP CHOICES
+    ================================================== */
 
     .choice-buttons {
+
       display: flex;
 
       gap: 14px;
@@ -752,7 +1169,9 @@
       margin-top: 20px;
     }
 
+
     .choice-button {
+
       flex: 1;
 
       padding: 15px;
@@ -766,7 +1185,9 @@
       transition: .3s ease;
     }
 
+
     .yes-choice {
+
       border:
         1px solid var(--gold);
 
@@ -776,7 +1197,9 @@
       color: var(--cream);
     }
 
+
     .no-choice {
+
       border:
         1px solid rgba(245,214,129,.45);
 
@@ -786,24 +1209,32 @@
       color: var(--muted);
     }
 
+
     .choice-button:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
     }
 
 
-    /* =========================================
-       FORM
-    ========================================= */
+    /* ==================================================
+       RSVP FORM
+    ================================================== */
 
     .rsvp-form {
+
       text-align: left;
     }
 
+
     .form-group {
+
       margin-bottom: 18px;
     }
 
+
     .form-label {
+
       display: block;
 
       margin-bottom: 7px;
@@ -813,7 +1244,9 @@
       font-size: 15px;
     }
 
+
     .rsvp-input {
+
       width: 100%;
 
       padding: 14px 15px;
@@ -833,18 +1266,26 @@
       font-size: 16px;
     }
 
+
     .rsvp-input::placeholder {
+
       color: #bba475;
     }
 
+
     .rsvp-input:focus {
-      border-color: var(--gold);
+
+      border-color:
+        var(--gold);
 
       box-shadow:
-        0 0 0 2px rgba(217,164,65,.12);
+        0 0 0 2px
+        rgba(217,164,65,.12);
     }
 
+
     .submit-button {
+
       width: 100%;
 
       margin-top: 5px;
@@ -868,14 +1309,19 @@
       transition: .3s ease;
     }
 
+
     .submit-button:hover {
+
       background:
         rgba(217,164,65,.36);
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
     }
 
+
     .submit-button:disabled {
+
       opacity: .6;
 
       cursor: wait;
@@ -884,29 +1330,38 @@
     }
 
 
-    /* =========================================
+    /* ==================================================
        SUCCESS
-    ========================================= */
+    ================================================== */
 
     .success {
+
       display: none;
 
       padding: 20px 5px;
     }
 
+
     .success.show {
+
       display: block;
 
       animation:
         modalFade .4s ease;
     }
 
+
     .success-icon {
+
       font-size: 55px;
     }
 
+
     .success-title {
-      font-family: "Yatra One", serif;
+
+      font-family:
+        "Yatra One",
+        serif;
 
       font-size: 34px;
 
@@ -915,7 +1370,9 @@
       margin-top: 8px;
     }
 
+
     .success-text {
+
       margin-top: 12px;
 
       color: var(--muted);
@@ -923,7 +1380,9 @@
       line-height: 1.8;
     }
 
+
     .success-close {
+
       margin-top: 22px;
 
       padding: 12px 30px;
@@ -942,27 +1401,35 @@
     }
 
 
-    /* =========================================
+    /* ==================================================
        FOOTER
-    ========================================= */
+    ================================================== */
 
     footer {
-      padding: 70px 20px 90px;
+
+      padding:
+        70px 20px 90px;
 
       text-align: center;
 
       background: #160302;
     }
 
+
     .footer-om {
-      font-family: "Yatra One", serif;
+
+      font-family:
+        "Yatra One",
+        serif;
 
       font-size: 48px;
 
       color: var(--gold-light);
     }
 
+
     .footer-text {
+
       margin-top: 14px;
 
       color: var(--muted);
@@ -971,58 +1438,81 @@
     }
 
 
-    /* =========================================
-       REVEAL ANIMATION
-    ========================================= */
+    /* ==================================================
+       ANIMATIONS
+    ================================================== */
 
     .reveal {
+
       opacity: 0;
 
-      transform: translateY(35px);
+      transform:
+        translateY(35px);
 
       transition:
         opacity 1s ease,
         transform 1s ease;
     }
+
 
     .reveal.show {
+
       opacity: 1;
 
-      transform: translateY(0);
+      transform:
+        translateY(0);
     }
 
+
     .scale-in {
+
       opacity: 0;
 
-      transform: scale(.88);
+      transform:
+        scale(.88);
 
       transition:
         opacity 1s ease,
         transform 1s ease;
     }
 
+
     .scale-in.show {
+
       opacity: 1;
 
-      transform: scale(1);
+      transform:
+        scale(1);
     }
 
 
-    /* =========================================
-       ANIMATIONS
-    ========================================= */
+    @keyframes sealFloat {
+
+      0%,100% {
+        transform:
+          translateY(0);
+      }
+
+      50% {
+        transform:
+          translateY(-7px);
+      }
+    }
+
 
     @keyframes floating {
 
       0%,100% {
-        transform: translateY(0);
+        transform:
+          translateY(0);
       }
 
       50% {
-        transform: translateY(-9px);
+        transform:
+          translateY(-9px);
       }
-
     }
+
 
     @keyframes bounce {
 
@@ -1035,8 +1525,8 @@
         transform:
           translate(-50%,-8px);
       }
-
     }
+
 
     @keyframes modalFade {
 
@@ -1053,15 +1543,14 @@
         transform:
           scale(1);
       }
-
     }
 
 
-    /* =========================================
+    /* ==================================================
        MOBILE
-    ========================================= */
+    ================================================== */
 
-    @media (max-width: 480px) {
+    @media (max-width:480px) {
 
       .section {
         padding:
@@ -1081,6 +1570,12 @@
           32px 18px;
       }
 
+      .intro-top::before,
+      .intro-top::after {
+        width: 20px;
+        margin: 0 6px;
+      }
+
     }
 
   </style>
@@ -1090,1106 +1585,1224 @@
 <body>
 
 
-  <!-- =========================================
-       FIRST SCREEN (ENVELOPE DESIGN)
-    ========================================= -->
+<!-- ==================================================
+     OPENING SCREEN
+================================================== -->
 
-  <section id="intro" onclick="openInvitation()">
+<section id="intro">
 
-    <!-- Top Text -->
-    <div class="top-heading">
-      ॥ श्री गणेशाय नमः ॥
-    </div>
+  <div class="intro-top">
+    || श्री गणेशाय नमः ||
+  </div>
 
-    <!-- Center Wax Seal Button -->
-    <div class="wax-seal-wrapper">
-      <div class="wax-seal">
-        <div class="wax-seal-inner">
-          <div class="seal-text">
-            TAP TO<br>OPEN
-          </div>
+
+  <div class="intro-content">
+
+    <button
+      type="button"
+      class="tap-seal"
+      onclick="openInvitation()"
+      aria-label="Tap to open invitation"
+    >
+
+      <div class="tap-seal-content">
+
+        <div class="seal-symbol">
+          ॐ
         </div>
+
+        <div class="seal-divider"></div>
+
+        <div class="seal-text">
+          TAP TO<br>
+          OPEN
+        </div>
+
+        <div class="seal-divider"></div>
+
       </div>
+
+    </button>
+
+  </div>
+
+
+  <div class="intro-bottom">
+    शुभारंभ
+  </div>
+
+</section>
+
+
+<!-- ==================================================
+     MAIN INVITATION
+================================================== -->
+
+<main id="invitation">
+
+
+  <!-- ==================================================
+       HERO
+  ================================================== -->
+
+  <section class="section hero">
+
+    <div class="section-inner reveal">
+
+      <div class="ganesh-symbol">
+        ॐ
+      </div>
+
+      <h1 class="hero-title">
+        बाप्पाचे<br>
+        आगमन
+      </h1>
+
+      <div class="hero-subtitle">
+        गणरायाच्या मंगल आगमनाचा<br>
+        आनंदोत्सव साजरा करण्यासाठी
+      </div>
+
+      <div class="family-name">
+        Bhokare परिवाराकडून
+      </div>
+
+      <div class="invite-text">
+        सस्नेह आमंत्रण
+      </div>
+
     </div>
 
-    <!-- Spacer for balance -->
-    <div style="height: 30px; position: relative; z-index: 2;"></div>
+
+    <div class="scroll-hint">
+      ↓ SCROLL
+    </div>
 
   </section>
 
 
-  <!-- =========================================
-       INVITATION
-  ========================================= -->
+  <!-- ==================================================
+       GANPATI
+  ================================================== -->
 
-  <main id="invitation">
+  <section class="section">
+
+    <div class="section-inner">
 
 
-    <!-- HERO -->
+      <div class="reveal">
 
-    <section class="section hero">
+        <div class="heading-line">
 
-      <div class="section-inner reveal">
+          <span></span>
 
-        <div class="ganesh-symbol">
-          ॐ
+          <div>🪷</div>
+
+          <span></span>
+
         </div>
 
-        <h1 class="hero-title">
-          बाप्पाचे<br>
-          आगमन
-        </h1>
+        <h2 class="section-heading">
+          बाप्पाचे आगमन
+        </h2>
 
-        <div class="hero-subtitle">
-          गणरायाच्या मंगल आगमनाचा<br>
-          आनंदोत्सव साजरा करण्यासाठी
-        </div>
+      </div>
 
-        <div class="family-name">
+
+      <div class="ganpati-frame scale-in">
+
+        <img
+          src="hero-visual-BBS8_Fih.webp"
+          alt="श्री गणपती बाप्पा"
+          class="ganpati-image"
+        >
+
+      </div>
+
+
+      <div class="family-card reveal">
+
+        <div class="family-card-main">
           Bhokare परिवाराकडून
         </div>
 
-        <div class="invite-text">
-          सस्नेह आमंत्रण
+        <div class="family-card-sub">
+          श्री गणेशाच्या आगमनानिमित्त<br>
+          आपली उपस्थिती आम्हाला आनंद देईल.
         </div>
 
       </div>
 
-      <div class="scroll-hint">
-        ↓ SCROLL
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       MAHA AARTI
+  ================================================== -->
+
+  <section class="section">
+
+    <div class="event-card scale-in">
+
+      <div class="event-icon">
+        🪔
       </div>
 
-    </section>
+      <h2 class="event-title">
+        महाआरती
+      </h2>
 
+      <div class="event-divider"></div>
 
-    <!-- GANPATI -->
-
-    <section class="section">
-
-      <div class="section-inner">
-
-        <div class="reveal">
-
-          <div class="heading-line">
-
-            <span></span>
-
-            <div>🪷</div>
-
-            <span></span>
-
-          </div>
-
-          <h2 class="section-heading">
-            बाप्पाचे आगमन
-          </h2>
-
-        </div>
-
-
-        <div class="ganpati-frame scale-in">
-
-          <img
-            src="hero-visual-BBS8_Fih.webp"
-            alt="श्री गणपती बाप्पा"
-            class="ganpati-image"
-          >
-
-        </div>
-
-
-        <div class="family-card reveal">
-
-          <div class="family-card-main">
-            Bhokare परिवाराकडून
-          </div>
-
-          <div class="family-card-sub">
-            श्री गणेशाच्या आगमनानिमित्त<br>
-            आपली उपस्थिती आम्हाला आनंद देईल.
-          </div>
-
-        </div>
-
+      <div class="event-date">
+        Monday, 21st Sep 2026
       </div>
 
-    </section>
+      <div class="event-time">
+        6:30 PM
+      </div>
+
+      <div class="event-note">
+        श्री गणेशाच्या चरणी आरतीचा मंगल सोहळा
+      </div>
+
+    </div>
+
+  </section>
 
 
-    <!-- MAHA AARTI -->
+  <!-- ==================================================
+       VENUE
+  ================================================== -->
 
-    <section class="section">
+  <section class="section">
 
-      <div class="event-card scale-in">
+    <div class="section-inner">
 
-        <div class="event-icon">
-          🪔
+
+      <div class="reveal">
+
+        <div class="venue-icon">
+          📍
         </div>
 
-        <h2 class="event-title">
-          महाआरती
+        <h2 class="venue-title">
+          स्थळ
         </h2>
 
-        <div class="event-divider"></div>
-
-        <div class="event-date">
-          Monday, 21st Sep 2026
-        </div>
-
-        <div class="event-time">
-          6:30 PM
-        </div>
-
-        <div class="event-note">
-          श्री गणेशाच्या चरणी आरतीचा मंगल सोहळा
-        </div>
-
       </div>
 
-    </section>
 
+      <div class="reveal">
 
-    <!-- VENUE -->
+        <div class="venue-name">
+          Bhokare Residence
+        </div>
 
-    <section class="section">
-
-      <div class="section-inner">
-
-        <div class="reveal">
-
-          <div class="venue-icon">
-            📍
-          </div>
-
-          <h2 class="venue-title">
-            स्थळ
-          </h2>
-
+        <div class="venue-address">
+          1483 Kirts Blvd, Apt 206<br>
+          Troy, MI 48084
         </div>
 
 
-        <div class="reveal">
-
-          <div class="venue-name">
-            Bhokare Residence
-          </div>
-
-          <div class="venue-address">
-            1483 Kirts Blvd, Apt 206<br>
-            Troy, MI 48084
-          </div>
-
-          <a
-            class="map-button"
-            href="https://www.google.com/maps/search/?api=1&query=1483+Kirts+Blvd+Apt+206+Troy+MI+48084"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📍 Google Maps वर पहा
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- RSVP -->
-
-    <section class="section rsvp-section">
-
-      <div class="rsvp-card reveal">
-
-        <div class="rsvp-icon">
-          💌
-        </div>
-
-        <h2 class="rsvp-title">
-          RSVP
-        </h2>
-
-        <div class="rsvp-subtitle">
-          आपल्या उपस्थितीची कृपया नोंद करा.<br>
-          तुमची उपस्थिती आमच्यासाठी आनंदाची बाब आहे. 🙏
-        </div>
-
-        <button
-          type="button"
-          class="rsvp-main-button"
-          onclick="openRSVPChoice(event)"
+        <a
+          class="map-button"
+          href="https://www.google.com/maps/search/?api=1&query=1483+Kirts+Blvd+Apt+206+Troy+MI+48084"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          RSVP करा
-        </button>
+          📍 Google Maps वर पहा
+        </a>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
-    <!-- FOOTER -->
+  <!-- ==================================================
+       RSVP
+  ================================================== -->
 
-    <footer>
+  <section class="section rsvp-section">
 
-      <div class="footer-om">
-        ॥ श्री गणेशाय नमः ॥
-      </div>
+    <div class="rsvp-card reveal">
 
-      <div class="footer-text">
-        गणपती बाप्पा मोरया 🙏
-      </div>
-
-    </footer>
-
-  </main>
-
-
-  <!-- =========================================
-       RSVP CHOICE MODAL
-  ========================================= -->
-
-  <div
-    id="rsvpChoiceModal"
-    class="rsvp-modal"
-    onclick="closeOutside(event,'rsvpChoiceModal')"
-  >
-
-    <div class="modal-box">
-
-      <button
-        type="button"
-        class="close-button"
-        onclick="closeModal('rsvpChoiceModal')"
-      >
-        ×
-      </button>
-
-      <div class="modal-icon">
+      <div class="rsvp-icon">
         💌
       </div>
 
-      <h2 class="modal-title">
+      <h2 class="rsvp-title">
         RSVP
       </h2>
 
-      <div class="modal-subtitle">
-        आपण कार्यक्रमाला उपस्थित राहणार आहात का?
+      <div class="rsvp-subtitle">
+        आपल्या उपस्थितीची कृपया नोंद करा.<br>
+        तुमची उपस्थिती आमच्यासाठी आनंदाची बाब आहे. 🙏
       </div>
 
-      <div class="choice-buttons">
+      <button
+        type="button"
+        class="rsvp-main-button"
+        onclick="openRSVPChoice(event)"
+      >
+        RSVP करा
+      </button>
 
-        <button
-          type="button"
-          class="choice-button yes-choice"
-          onclick="openYesRSVP()"
-        >
-          🙏 होय
-        </button>
+    </div>
 
-        <button
-          type="button"
-          class="choice-button no-choice"
-          onclick="openNoRSVP()"
-        >
-          नंतर / नाही
-        </button>
+  </section>
 
-      </div>
+
+  <!-- ==================================================
+       FOOTER
+  ================================================== -->
+
+  <footer>
+
+    <div class="footer-om">
+      ॥ श्री गणेशाय नमः ॥
+    </div>
+
+    <div class="footer-text">
+      गणपती बाप्पा मोरया 🙏
+    </div>
+
+  </footer>
+
+
+</main>
+
+
+<!-- ==================================================
+     RSVP CHOICE MODAL
+================================================== -->
+
+<div
+  id="rsvpChoiceModal"
+  class="rsvp-modal"
+  onclick="closeOutside(event,'rsvpChoiceModal')"
+>
+
+  <div class="modal-box">
+
+    <button
+      type="button"
+      class="close-button"
+      onclick="closeModal('rsvpChoiceModal')"
+    >
+      ×
+    </button>
+
+
+    <div class="modal-icon">
+      💌
+    </div>
+
+
+    <h2 class="modal-title">
+      RSVP
+    </h2>
+
+
+    <div class="modal-subtitle">
+      आपण कार्यक्रमाला उपस्थित राहणार आहात का?
+    </div>
+
+
+    <div class="choice-buttons">
+
+      <button
+        type="button"
+        class="choice-button yes-choice"
+        onclick="openYesRSVP()"
+      >
+        🙏 होय
+      </button>
+
+
+      <button
+        type="button"
+        class="choice-button no-choice"
+        onclick="openNoRSVP()"
+      >
+        नाही
+      </button>
 
     </div>
 
   </div>
 
+</div>
 
-  <!-- =========================================
-       YES RSVP MODAL
-  ========================================= -->
 
-  <div
-    id="yesRSVPModal"
-    class="rsvp-modal"
-    onclick="closeOutside(event,'yesRSVPModal')"
-  >
+<!-- ==================================================
+     YES RSVP MODAL
+================================================== -->
 
-    <div class="modal-box">
+<div
+  id="yesRSVPModal"
+  class="rsvp-modal"
+  onclick="closeOutside(event,'yesRSVPModal')"
+>
 
+  <div class="modal-box">
+
+    <button
+      type="button"
+      class="close-button"
+      onclick="closeModal('yesRSVPModal')"
+    >
+      ×
+    </button>
+
+
+    <div id="yesFormContainer">
+
+      <div class="modal-icon">
+        🙏
+      </div>
+
+
+      <h2 class="modal-title">
+        उपस्थिती नोंदवा
+      </h2>
+
+
+      <div class="modal-subtitle">
+        कृपया खालील माहिती भरा.
+      </div>
+
+
+      <form
+        id="yesRSVPForm"
+        class="rsvp-form"
+        onsubmit="submitYesRSVP(event)"
+      >
+
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="yesName"
+          >
+            तुमचे नाव
+          </label>
+
+          <input
+            id="yesName"
+            class="rsvp-input"
+            type="text"
+            placeholder="तुमचे नाव"
+            maxlength="100"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="yesEmail"
+          >
+            Email
+          </label>
+
+          <input
+            id="yesEmail"
+            class="rsvp-input"
+            type="email"
+            placeholder="your@email.com"
+            maxlength="150"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="yesGuests"
+          >
+            Total Guests
+          </label>
+
+          <input
+            id="yesGuests"
+            class="rsvp-input"
+            type="number"
+            min="1"
+            max="50"
+            placeholder="उदा. 4"
+            required
+          >
+
+        </div>
+
+
+        <button
+          id="yesSubmitButton"
+          class="submit-button"
+          type="submit"
+        >
+          उपस्थिती नोंदवा
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div
+      id="yesSuccess"
+      class="success"
+    >
+
+      <div class="success-icon">
+        🎉
+      </div>
+
+      <div class="success-title">
+        धन्यवाद!
+      </div>
+
+      <div class="success-text">
+        तुमची उपस्थिती यशस्वीरीत्या नोंदवली आहे. 🙏<br>
+        गणपती बाप्पा मोरया!
+      </div>
 
       <button
         type="button"
-        class="close-button"
+        class="success-close"
         onclick="closeModal('yesRSVPModal')"
       >
-        ×
+        बंद करा
       </button>
-
-
-      <div id="yesFormContainer">
-
-        <div class="modal-icon">
-          🙏
-        </div>
-
-        <h2 class="modal-title">
-          उपस्थिती नोंदवा
-        </h2>
-
-        <div class="modal-subtitle">
-          कृपया खालील माहिती भरा.
-        </div>
-
-
-        <form
-          id="yesRSVPForm"
-          class="rsvp-form"
-          onsubmit="submitYesRSVP(event)"
-        >
-
-
-          <div class="form-group">
-
-            <label
-              class="form-label"
-              for="yesName"
-            >
-              तुमचे नाव
-            </label>
-
-            <input
-              id="yesName"
-              class="rsvp-input"
-              type="text"
-              placeholder="तुमचे नाव"
-              maxlength="100"
-              autocomplete="name"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label
-              class="form-label"
-              for="yesEmail"
-            >
-              Email
-            </label>
-
-            <input
-              id="yesEmail"
-              class="rsvp-input"
-              type="email"
-              placeholder="your@email.com"
-              maxlength="150"
-              autocomplete="email"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label
-              class="form-label"
-              for="yesGuests"
-            >
-              Total Guests
-            </label>
-
-            <input
-              id="yesGuests"
-              class="rsvp-input"
-              type="number"
-              min="1"
-              max="50"
-              placeholder="उदा. 4"
-              required
-            >
-
-          </div>
-
-
-          <button
-            id="yesSubmitButton"
-            class="submit-button"
-            type="submit"
-          >
-            उपस्थिती नोंदवा
-          </button>
-
-        </form>
-
-      </div>
-
-
-      <!-- YES SUCCESS -->
-
-      <div
-        id="yesSuccess"
-        class="success"
-      >
-
-        <div class="success-icon">
-          🎉
-        </div>
-
-        <div class="success-title">
-          धन्यवाद!
-        </div>
-
-        <div class="success-text">
-          तुमची उपस्थिती यशस्वीरीत्या नोंदवली आहे. 🙏<br>
-          गणपती बाप्पा मोरया!
-        </div>
-
-        <button
-          type="button"
-          class="success-close"
-          onclick="closeModal('yesRSVPModal')"
-        >
-          बंद करा
-        </button>
-
-      </div>
 
     </div>
 
   </div>
 
+</div>
 
-  <!-- =========================================
-       NO RSVP MODAL
-  ========================================= -->
 
-  <div
-    id="noRSVPModal"
-    class="rsvp-modal"
-    onclick="closeOutside(event,'noRSVPModal')"
-  >
+<!-- ==================================================
+     NO RSVP MODAL
+================================================== -->
 
-    <div class="modal-box">
+<div
+  id="noRSVPModal"
+  class="rsvp-modal"
+  onclick="closeOutside(event,'noRSVPModal')"
+>
 
+  <div class="modal-box">
+
+    <button
+      type="button"
+      class="close-button"
+      onclick="closeModal('noRSVPModal')"
+    >
+      ×
+    </button>
+
+
+    <div id="noFormContainer">
+
+      <div class="modal-icon">
+        🙏
+      </div>
+
+
+      <h2 class="modal-title">
+        कळवल्याबद्दल धन्यवाद
+      </h2>
+
+
+      <div class="modal-subtitle">
+        आपण उपस्थित राहू शकत नसल्यास कृपया आपले नाव नोंदवा.
+      </div>
+
+
+      <form
+        id="noRSVPForm"
+        class="rsvp-form"
+        onsubmit="submitNoRSVP(event)"
+      >
+
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="noName"
+          >
+            तुमचे नाव
+          </label>
+
+          <input
+            id="noName"
+            class="rsvp-input"
+            type="text"
+            placeholder="तुमचे नाव"
+            maxlength="100"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <button
+          id="noSubmitButton"
+          class="submit-button"
+          type="submit"
+        >
+          Respond करा
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div
+      id="noSuccess"
+      class="success"
+    >
+
+      <div class="success-icon">
+        🙏
+      </div>
+
+      <div class="success-title">
+        धन्यवाद!
+      </div>
+
+      <div class="success-text">
+        तुमचा प्रतिसाद नोंदवला आहे.
+      </div>
 
       <button
         type="button"
-        class="close-button"
+        class="success-close"
         onclick="closeModal('noRSVPModal')"
       >
-        ×
+        बंद करा
       </button>
-
-
-      <div id="noFormContainer">
-
-        <div class="modal-icon">
-          🙏
-        </div>
-
-        <h2 class="modal-title">
-          कळवल्याबद्दल धन्यवाद
-        </h2>
-
-        <div class="modal-subtitle">
-          आपण उपस्थित राहू शकत नसल्यास कृपया आपले नाव नोंदवा.
-        </div>
-
-
-        <form
-          id="noRSVPForm"
-          class="rsvp-form"
-          onsubmit="submitNoRSVP(event)"
-        >
-
-
-          <div class="form-group">
-
-            <label
-              class="form-label"
-              for="noName"
-            >
-              तुमचे नाव
-            </label>
-
-            <input
-              id="noName"
-              class="rsvp-input"
-              type="text"
-              placeholder="तुमचे नाव"
-              maxlength="100"
-              autocomplete="name"
-              required
-            >
-
-          </div>
-
-
-          <button
-            id="noSubmitButton"
-            class="submit-button"
-            type="submit"
-          >
-            Respond करा
-          </button>
-
-        </form>
-
-      </div>
-
-
-      <!-- NO SUCCESS -->
-
-      <div
-        id="noSuccess"
-        class="success"
-      >
-
-        <div class="success-icon">
-          🙏
-        </div>
-
-        <div class="success-title">
-          धन्यवाद!
-        </div>
-
-        <div class="success-text">
-          तुमचा प्रतिसाद नोंदवला आहे.
-        </div>
-
-        <button
-          type="button"
-          class="success-close"
-          onclick="closeModal('noRSVPModal')"
-        >
-          बंद करा
-        </button>
-
-      </div>
 
     </div>
 
   </div>
 
-
-  <!-- =========================================
-       JAVASCRIPT
-  ========================================= -->
-
-  <script>
+</div>
 
 
-    /* =========================================
-       YOUR WORKING GOOGLE APPS SCRIPT URL
-    ========================================= */
+<!-- ==================================================
+     HIDDEN IFRAME
+================================================== -->
 
-    const RSVP_SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbzqlH_XhGEwwVKicLJPXkld2-tzvGEDfaJU9hqJbEqNMPEcw8xNVJox6ufAqdFl9gdr/exec";
-
-
-    /* =========================================
-       OPEN INVITATION
-    ========================================= */
-
-    function openInvitation() {
-
-      const intro =
-        document.getElementById("intro");
-
-      const invitation =
-        document.getElementById("invitation");
+<iframe
+  name="rsvpSubmitFrame"
+  style="display:none;"
+></iframe>
 
 
-      intro.style.opacity = "0";
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
-      intro.style.transform =
-        "scale(1.04)";
-
-
-      setTimeout(() => {
-
-        intro.style.display = "none";
-
-        invitation.style.display = "block";
-
-        window.scrollTo(0,0);
-
-        document
-          .querySelectorAll(".reveal,.scale-in")
-          .forEach(el => {
-
-            el.classList.add("show");
-
-          });
-
-      }, 800);
-
-    }
+<script>
 
 
-    /* =========================================
-       SCROLL ANIMATIONS
-    ========================================= */
+/* ==================================================
+   GOOGLE APPS SCRIPT WEB APP URL
+================================================== */
 
-    const observer =
-      new IntersectionObserver(
+const RSVP_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzqlH_XhGEwwVKicLJPXkld2-tzvGEDfaJU9hqJbEqNMPEcw8xNVJox6ufAqdFl9gdr/exec";
 
-        entries => {
 
-          entries.forEach(entry => {
+/* ==================================================
+   OPEN INVITATION
+================================================== */
 
-            if (entry.isIntersecting) {
+function openInvitation() {
 
-              entry.target.classList.add("show");
+  const intro =
+    document.getElementById("intro");
 
-            }
+  const invitation =
+    document.getElementById("invitation");
 
-          });
 
-        },
+  intro.style.opacity = "0";
 
-        {
-          threshold: .15
-        }
+  intro.style.transform =
+    "scale(1.04)";
 
-      );
+
+  setTimeout(function() {
+
+    intro.style.display = "none";
+
+    invitation.style.display =
+      "block";
+
+    window.scrollTo(0, 0);
 
 
     document
-      .querySelectorAll(".reveal,.scale-in")
-      .forEach(el => {
+      .querySelectorAll(
+        ".reveal, .scale-in"
+      )
+      .forEach(function(el) {
 
-        observer.observe(el);
+        el.classList.add("show");
 
       });
 
+  }, 850);
 
-    /* =========================================
-       OPEN RSVP CHOICE
-    ========================================= */
+}
 
-    function openRSVPChoice(event) {
 
-      if (event) {
-        event.stopPropagation();
-      }
+/* ==================================================
+   SCROLL ANIMATION
+================================================== */
 
-      document
-        .getElementById("rsvpChoiceModal")
-        .classList.add("active");
+const observer =
+  new IntersectionObserver(
 
-      document.body.style.overflow =
-        "hidden";
+    function(entries) {
 
+      entries.forEach(
+        function(entry) {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            entry.target
+              .classList
+              .add("show");
+
+          }
+
+        }
+      );
+
+    },
+
+    {
+      threshold: .15
     }
 
+  );
 
-    /* =========================================
-       OPEN YES
-    ========================================= */
 
-    function openYesRSVP() {
+document
+  .querySelectorAll(
+    ".reveal, .scale-in"
+  )
+  .forEach(function(el) {
 
-      closeModal("rsvpChoiceModal");
+    observer.observe(el);
 
-      resetYesForm();
+  });
 
-      document
-        .getElementById("yesRSVPModal")
-        .classList.add("active");
 
-      document.body.style.overflow =
-        "hidden";
+/* ==================================================
+   OPEN RSVP CHOICE
+================================================== */
 
-    }
+function openRSVPChoice(event) {
 
+  if (event) {
+    event.stopPropagation();
+  }
 
-    /* =========================================
-       OPEN NO
-    ========================================= */
 
-    function openNoRSVP() {
+  document
+    .getElementById(
+      "rsvpChoiceModal"
+    )
+    .classList
+    .add("active");
 
-      closeModal("rsvpChoiceModal");
 
-      resetNoForm();
+  document.body.style.overflow =
+    "hidden";
+}
 
-      document
-        .getElementById("noRSVPModal")
-        .classList.add("active");
 
-      document.body.style.overflow =
-        "hidden";
+/* ==================================================
+   OPEN YES RSVP
+================================================== */
 
-    }
+function openYesRSVP() {
 
+  closeModal(
+    "rsvpChoiceModal"
+  );
 
-    /* =========================================
-       CLOSE MODAL
-    ========================================= */
 
-    function closeModal(id) {
+  resetYesForm();
 
-      const modal =
-        document.getElementById(id);
 
-      if (modal) {
+  document
+    .getElementById(
+      "yesRSVPModal"
+    )
+    .classList
+    .add("active");
 
-        modal.classList.remove("active");
 
-      }
+  document.body.style.overflow =
+    "hidden";
+}
 
-      document.body.style.overflow =
-        "";
 
-    }
+/* ==================================================
+   OPEN NO RSVP
+================================================== */
 
+function openNoRSVP() {
 
-    /* =========================================
-       CLICK OUTSIDE MODAL
-    ========================================= */
+  closeModal(
+    "rsvpChoiceModal"
+  );
 
-    function closeOutside(event,id) {
 
-      if (event.target.id === id) {
+  resetNoForm();
 
-        closeModal(id);
 
-      }
+  document
+    .getElementById(
+      "noRSVPModal"
+    )
+    .classList
+    .add("active");
 
-    }
 
+  document.body.style.overflow =
+    "hidden";
+}
 
-    /* =========================================
-       SEND RSVP
-    ========================================= */
 
-    async function sendRSVP(data) {
+/* ==================================================
+   CLOSE MODAL
+================================================== */
 
-      const payload = new URLSearchParams();
+function closeModal(id) {
 
-      Object.keys(data).forEach(key => {
-        payload.append(key, data[key]);
-      });
+  const modal =
+    document.getElementById(id);
 
-      await fetch(RSVP_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: payload.toString()
-      });
 
-    }
+  if (modal) {
 
+    modal.classList.remove(
+      "active"
+    );
 
-    /* =========================================
-       YES RSVP SUBMISSION
-    ========================================= */
+  }
 
-    async function submitYesRSVP(event) {
 
-      event.preventDefault();
+  document.body.style.overflow =
+    "";
+}
 
 
-      const name =
-        document
-          .getElementById("yesName")
-          .value
-          .trim();
+/* ==================================================
+   CLOSE OUTSIDE
+================================================== */
 
+function closeOutside(event, id) {
 
-      const email =
-        document
-          .getElementById("yesEmail")
-          .value
-          .trim();
+  if (
+    event.target.id === id
+  ) {
 
+    closeModal(id);
 
-      const guests =
-        document
-          .getElementById("yesGuests")
-          .value;
+  }
 
+}
 
-      if (
-        !name ||
-        !email ||
-        !guests
-      ) {
 
-        alert(
-          "कृपया सर्व माहिती भरा."
-        );
+/* ==================================================
+   SEND RSVP TO GOOGLE APPS SCRIPT
+================================================== */
 
-        return;
+function sendRSVP(data) {
 
-      }
+  const form =
+    document.createElement("form");
 
 
-      const button =
-        document.getElementById(
-          "yesSubmitButton"
-        );
+  form.method = "POST";
 
+  form.action =
+    RSVP_SCRIPT_URL;
 
-      button.disabled =
-        true;
+  form.target =
+    "rsvpSubmitFrame";
 
-      button.textContent =
-        "Saving...";
+  form.style.display =
+    "none";
 
 
-      try {
+  Object.keys(data).forEach(
+    function(key) {
 
-
-        await sendRSVP({
-
-          response: "YES",
-
-          name: name,
-
-          email: email,
-
-          guests: guests
-
-        });
-
-
-        document
-          .getElementById(
-            "yesFormContainer"
-          )
-          .style.display =
-          "none";
-
-
-        document
-          .getElementById(
-            "yesSuccess"
-          )
-          .classList.add(
-            "show"
-          );
-
-
-      } catch(error) {
-
-
-        console.error(
-          error
+      const input =
+        document.createElement(
+          "input"
         );
 
 
-        alert(
-          "काहीतरी समस्या आली. कृपया पुन्हा प्रयत्न करा."
-        );
+      input.type = "hidden";
 
-      }
+      input.name = key;
+
+      input.value =
+        data[key];
 
 
-      button.disabled =
-        false;
-
-      button.textContent =
-        "उपस्थिती नोंदवा";
+      form.appendChild(
+        input
+      );
 
     }
+  );
 
 
-    /* =========================================
-       NO RSVP SUBMISSION
-    ========================================= */
-
-    async function submitNoRSVP(event) {
-
-      event.preventDefault();
+  document.body.appendChild(
+    form
+  );
 
 
-      const name =
-        document
-          .getElementById("noName")
-          .value
-          .trim();
+  form.submit();
 
 
-      if (!name) {
+  setTimeout(
+    function() {
 
-        alert(
-          "कृपया आपले नाव भरा."
-        );
+      if (form.parentNode) {
 
-        return;
+        form.parentNode
+          .removeChild(form);
 
       }
 
+    },
+    5000
+  );
 
-      const button =
-        document.getElementById(
-          "noSubmitButton"
-        );
-
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        "Saving...";
+}
 
 
-      try {
+/* ==================================================
+   YES RSVP SUBMISSION
+================================================== */
+
+function submitYesRSVP(event) {
+
+  event.preventDefault();
 
 
-        await sendRSVP({
-
-          response: "NO",
-
-          name: name,
-
-          email: "",
-
-          guests: "0"
-
-        });
+  const name =
+    document
+      .getElementById(
+        "yesName"
+      )
+      .value
+      .trim();
 
 
-        document
-          .getElementById(
-            "noFormContainer"
-          )
-          .style.display =
-          "none";
+  const email =
+    document
+      .getElementById(
+        "yesEmail"
+      )
+      .value
+      .trim();
 
 
-        document
-          .getElementById(
-            "noSuccess"
-          )
-          .classList.add(
-            "show"
-          );
+  const guests =
+    document
+      .getElementById(
+        "yesGuests"
+      )
+      .value
+      .trim();
 
 
-      } catch(error) {
+  if (
+    !name ||
+    !email ||
+    !guests
+  ) {
+
+    alert(
+      "कृपया सर्व माहिती भरा."
+    );
+
+    return;
+
+  }
 
 
-        console.error(
-          error
-        );
+  const button =
+    document.getElementById(
+      "yesSubmitButton"
+    );
 
 
-        alert(
-          "काहीतरी समस्या आली. कृपया पुन्हा प्रयत्न करा."
-        );
+  button.disabled = true;
 
-      }
-
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        "Respond करा";
-
-    }
+  button.textContent =
+    "Saving...";
 
 
-    /* =========================================
-       RESET YES FORM
-    ========================================= */
+  sendRSVP({
 
-    function resetYesForm() {
+    response: "YES",
 
-      document
-        .getElementById(
-          "yesRSVPForm"
-        )
-        .reset();
+    name: name,
 
+    email: email,
+
+    guests: guests
+
+  });
+
+
+  setTimeout(
+    function() {
 
       document
         .getElementById(
           "yesFormContainer"
         )
         .style.display =
-        "block";
+        "none";
 
 
       document
         .getElementById(
           "yesSuccess"
         )
-        .classList.remove(
-          "show"
-        );
-
-    }
+        .classList
+        .add("show");
 
 
-    /* =========================================
-       RESET NO FORM
-    ========================================= */
+      button.disabled =
+        false;
 
-    function resetNoForm() {
 
-      document
-        .getElementById(
-          "noRSVPForm"
-        )
-        .reset();
+      button.textContent =
+        "उपस्थिती नोंदवा";
 
+    },
+    2000
+  );
+
+}
+
+
+/* ==================================================
+   NO RSVP SUBMISSION
+================================================== */
+
+function submitNoRSVP(event) {
+
+  event.preventDefault();
+
+
+  const name =
+    document
+      .getElementById(
+        "noName"
+      )
+      .value
+      .trim();
+
+
+  if (!name) {
+
+    alert(
+      "कृपया आपले नाव भरा."
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "noSubmitButton"
+    );
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "Saving...";
+
+
+  sendRSVP({
+
+    response: "NO",
+
+    name: name,
+
+    email: "",
+
+    guests: "0"
+
+  });
+
+
+  setTimeout(
+    function() {
 
       document
         .getElementById(
           "noFormContainer"
         )
         .style.display =
-        "block";
+        "none";
 
 
       document
         .getElementById(
           "noSuccess"
         )
-        .classList.remove(
-          "show"
-        );
+        .classList
+        .add("show");
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "Respond करा";
+
+    },
+    2000
+  );
+
+}
+
+
+/* ==================================================
+   RESET YES FORM
+================================================== */
+
+function resetYesForm() {
+
+  document
+    .getElementById(
+      "yesRSVPForm"
+    )
+    .reset();
+
+
+  document
+    .getElementById(
+      "yesFormContainer"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "yesSuccess"
+    )
+    .classList
+    .remove("show");
+
+}
+
+
+/* ==================================================
+   RESET NO FORM
+================================================== */
+
+function resetNoForm() {
+
+  document
+    .getElementById(
+      "noRSVPForm"
+    )
+    .reset();
+
+
+  document
+    .getElementById(
+      "noFormContainer"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "noSuccess"
+    )
+    .classList
+    .remove("show");
+
+}
+
+
+/* ==================================================
+   ESCAPE KEY
+================================================== */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeModal(
+        "rsvpChoiceModal"
+      );
+
+      closeModal(
+        "yesRSVPModal"
+      );
+
+      closeModal(
+        "noRSVPModal"
+      );
 
     }
 
-
-    /* =========================================
-       ESC KEY
-    ========================================= */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          closeModal(
-            "rsvpChoiceModal"
-          );
-
-          closeModal(
-            "yesRSVPModal"
-          );
-
-          closeModal(
-            "noRSVPModal"
-          );
-
-        }
-
-      }
-    );
+  }
+);
 
 
-  </script>
+</script>
+
 
 </body>
 </html>
