@@ -99,8 +99,8 @@
       top: 50px;
 
       z-index: 3;
-
-      font-family: "Yatra One", serif;
+      
+      font-family: "Noto Sans Devanagari", sans-serif;
 
       font-size:
         clamp(20px, 5vw, 26px);
@@ -191,6 +191,14 @@
       letter-spacing: 1.5px;
 
       line-height: 1.3;
+    }
+
+
+    /* Marathi / Devanagari text fix */
+    .top-heading,
+    .sub-text {
+      letter-spacing: normal;
+      word-spacing: normal;
     }
 
     @keyframes pulseGlow {
@@ -323,13 +331,20 @@
     ========================================= */
 
     .om-symbol {
-      font-family: "Yatra One", serif;
-
+      font-family: "Noto Serif Devanagari", serif;
+      
       font-size: 48px;
 
+      font-weight: 1000;
+      
       color: #f5d681;
-
+      
       line-height: 1;
+      
+      letter-spacing: 0;
+      word-spacing: 0;
+      font-kerning: normal;
+      font-variant-ligatures: normal;
     }
 
     .main-title {
@@ -419,11 +434,16 @@
     }
 
     .section-title {
-      font-family: "Yatra One", serif;
-
+      font-family: "Noto Serif Devanagari", serif;
+      
       font-size: 36px;
-
+      
       color: #f5d681;
+      
+      letter-spacing: 0;
+      word-spacing: 0;
+      font-kerning: normal;
+      font-variant-ligatures: normal;
     }
 
     .date-text {
@@ -474,6 +494,54 @@
       margin-top: 4px;
     }
 
+    /* =========================================
+       HOST NOTE
+    ========================================= */    
+
+    .host-note {
+      margin: 20px 10px 16px;
+      padding: 16px 20px;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      border-radius: 12px;
+      background: rgba(255, 248, 220, 0.08);
+    }
+    
+    .host-note-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 8px;
+    }
+    .host-note p {
+      margin: 0;
+      color: #f8ead0;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .host-warning {
+      font-weight: 2000;
+      color: #fff0c7;
+      display: block;
+      text-align: center;
+    }
+
+    /* SNEHWAN LINK */
+    .snehwan-link {
+      color: #f5d681;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: opacity 0.3s ease;
+    }
+    .snehwan-link:hover {
+      opacity: 0.75;
+    }
+
+
 
     /* =========================================
        ACTION BUTTON
@@ -482,7 +550,7 @@
     .btn-action {
       display: inline-block;
 
-      width: 80%;
+      width: 100%;
 
       padding: 12px 20px;
 
@@ -506,6 +574,8 @@
 
       cursor: pointer;
 
+      white-space: nowrap;
+
       transition:
         background 0.3s ease,
         transform 0.2s ease;
@@ -519,6 +589,7 @@
         translateY(-1px);
     }
 
+    
 
     /* =========================================
        RSVP TITLE
@@ -792,6 +863,17 @@
 
 <body>
 
+    <!-- =========================================
+       BACKGROUND MUSIC
+  ========================================= -->
+
+  <audio
+    id="bgMusic"
+    src="_Yare_Ya_Sare_Ya_Devotional_Ringtone_(by Fringster.com)_ringtone_(Fringster.com).mp3"
+    loop
+    preload="auto"
+  ></audio>
+
 
   <!-- =========================================
        SPLIT DOOR INTRO SCREEN
@@ -848,47 +930,41 @@
       <div>
 
         <div class="om-symbol">
-          ॐ
-        </div>
-
-
-        <h1 class="main-title">
           गणपती बाप्पा मोरया
-        </h1>
-
-
+        </div> 
+        
+        
+        
         <div class="ornament-divider">
           ❖
         </div>
 
 
         <p class="sub-text">
-          श्री गणरायाच्या शुभ आगमनाचा<br>
-          आनंदोत्सव साजरा करण्यासाठी
+          आपल्या लाडक्या श्री गणरायाच्या आरतीसाठी<br>
+          सर्वांना आग्रहाचे निमंत्रण!!
         </p>
 
 
         <h2 class="family-title">
-          Shruti & Sudnesh कडून
+          निमंत्रक - श्रुती व सुज्ञेश भोकरे
         </h2>
 
 
-        <p class="invite-subtitle">
-          — सस्नेह आमंत्रण —
-        </p>
-
+        <div class="ornament-divider">
+          ❖
+        </div>
       </div>
 
-
-      <div class="ganpati-frame">
-
-        <img
-          src="hero-visual-BBS8_Fih.webp"
-          alt="श्री गणेश"
-          class="ganpati-image"
-        >
-
-      </div>
+      <div class="ganpati-frame" style="transform: translateY(-30px);"> 
+        <img src="hero-visual-BBS8_Fih.webp" 
+        alt="श्री गणेश" 
+        class="ganpati-image" 
+        
+        > 
+      </div> 
+      
+   
 
     </section>
 
@@ -903,10 +979,6 @@
       <!-- MAHA AARTI -->
 
       <div>
-
-        <div class="diya-icon">
-          🪔
-        </div>
 
 
         <h2 class="section-title">
@@ -936,25 +1008,14 @@
       <div>
 
         <div style="font-size:24px;">
-          📍
+          Venue 🏡 
         </div>
-
-
-        <h2 class="venue-label">
-          स्थळ
-        </h2>
-
-
-        <p class="venue-name">
-          Bhokare Residence
-        </p>
 
 
         <p class="venue-address">
           1483 Kirts Blvd, Apt 206<br>
           Troy, MI 48084
-        </p>
-
+        </p> 
 
         <a
           class="btn-action"
@@ -962,8 +1023,28 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          📍 Google Maps वर पहा
+          📍 Open in Maps 
         </a>
+
+      </div>
+      
+      <div class="ornament-divider">
+        ❖
+      </div>
+
+      <!-- RSVP -->
+
+      <div style="width:100%;">
+
+      
+
+        <button
+          type="button"
+          class="btn-action"
+          onclick="openRSVPModal()"
+        >
+          RSVP Link
+        </button>
 
       </div>
 
@@ -972,39 +1053,34 @@
         ❖
       </div>
 
-
-      <!-- RSVP -->
-
-      <div style="width:100%;">
-
-        <div style="font-size:24px;">
-          ✉️
-        </div>
-
-
-        <h3 class="rsvp-title">
-          RSVP
-        </h3>
-
-
-        <p
-          class="sub-text"
-          style="font-size:14px;"
-        >
-          आपली उपस्थिती आम्हाला<br>
-          आनंद देईल.
-        </p>
-
-
-        <button
-          type="button"
-          class="btn-action"
-          onclick="openRSVPModal()"
-        >
-          RSVP करा
-        </button>
-
+      <!-- HOST NOTE -->
+      <div class="host-note">
+        
+      <div class="host-note-title">
+        Host Note
       </div>
+      
+    <p>
+      <strong class="host-warning">
+        Please don't bring any sweets/fruits.
+      </strong><br>
+      If you wish, please consider donating to Snehwan and help provide education and a brighter future for underprivileged and homeless children from India ❤️🙏🏻<br>
+      
+      
+      🔗 :
+    <a
+      href="https://www.snehwan.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="snehwan-link"
+    >
+      https://www.snehwan.in
+    </a>
+  </p>
+
+</div>
+
+
 
     </section>
 
@@ -1045,7 +1121,7 @@
         <input
           type="text"
           id="guestName"
-          placeholder="तुमचे नाव (Full Name)"
+          placeholder="Full Name"
           autocomplete="name"
           required
         >
@@ -1056,7 +1132,7 @@
         <input
           type="tel"
           id="guestPhone"
-          placeholder="फोन नंबर (Phone Number)"
+          placeholder="Phone Number"
           maxlength="20"
           autocomplete="tel"
           required
@@ -1068,7 +1144,7 @@
         <input
           type="email"
           id="guestEmail"
-          placeholder="ईमेल (Email Address)"
+          placeholder="Email Address"
           autocomplete="email"
           required
         >
@@ -1079,7 +1155,7 @@
         <input
           type="number"
           id="guestCount"
-          placeholder="उपस्थित संख्या (Number of Guests)"
+          placeholder="Total Guests"
           min="1"
           max="20"
           required
@@ -1122,20 +1198,12 @@
 
 
         <strong>
-          धन्यवाद!
+          Thank You
         </strong>
 
 
         <br>
 
-
-        तुमचा RSVP यशस्वीरित्या नोंदवला आहे.
-
-
-        <br><br>
-
-
-        गणपती बाप्पा मोरया! ❤️
 
       </div>
 
@@ -1169,7 +1237,6 @@
     const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbyBM0EBL9wSEwFAgYDT3ZGaRnZdiQNw0OTq4LTODs3m061CmrgKb_Udv1m0L1qXR_w/exec";
     
-
     /* =========================================
        OPEN INVITATION
     ========================================= */
@@ -1188,6 +1255,18 @@
 
 
       intro.classList.add("open");
+
+
+      /* START BACKGROUND MUSIC */
+
+      const music =
+        document.getElementById("bgMusic");
+
+      music.volume = 0.5;
+
+      music.play().catch(function(error) {
+        console.log("Music could not start:", error);
+      });
 
 
       setTimeout(function() {
