@@ -39,6 +39,53 @@
     }
 
     /* =========================================
+   MUSIC CONTROL BUTTON
+========================================= */
+
+    .music-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 10001;
+
+      width: 44px;
+      height: 44px;
+
+      border-radius: 50%;
+      border: 1px solid #d9a441;
+
+      background: rgba(26, 3, 3, 0.85);
+
+      color: #f5d681;
+
+      font-size: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25);
+
+      transition:
+        transform 0.2s ease,
+        background 0.3s ease; 
+   }
+
+  .music-toggle:hover {
+    transform: scale(1.08);
+
+    background:
+     rgba(217, 164, 65, 0.2);
+  }
+
+  .music-toggle:active {
+    transform: scale(0.95);
+  }
+
+    /* =========================================
        SPLIT DOOR INTRO SCREEN
     ========================================= */
 
@@ -874,6 +921,22 @@
     preload="auto"
   ></audio>
 
+  
+
+  <!-- =========================================
+     MUSIC CONTROL BUTTON
+========================================= -->
+
+  <button
+    id="musicToggle"
+    class="music-toggle"
+    onclick="toggleMusic(event)"
+    aria-label="Toggle music"
+  >
+    🔊
+  </button>
+
+
 
   <!-- =========================================
        SPLIT DOOR INTRO SCREEN
@@ -1277,6 +1340,40 @@
 
     }
 
+    /* =========================================
+   MUSIC TOGGLE
+========================================= */
+
+    function toggleMusic(event) {
+      
+      event.stopPropagation();
+      const music =
+        document.getElementById("bgMusic");
+      const button =
+        document.getElementById("musicToggle");
+
+      if (music.paused) {
+
+        music.play().then(function() {
+
+          button.textContent = "🔊";
+
+        }).catch(function(error) {
+
+          console.log("Music could not start:", error);
+
+        });
+
+      } else {
+
+        music.pause();
+
+        button.textContent = "🔇";
+
+      }
+
+    }
+
 
     /* =========================================
        OPEN RSVP MODAL
@@ -1310,6 +1407,20 @@
       modal.classList.remove("active");
 
     }
+
+    /* =========================================
+   STOP MUSIC WHEN PAGE/TAB IS HIDDEN
+========================================= */
+
+    document.addEventListener("visibilitychange", function () {
+
+      const music = 
+      document.getElementById("bgMusic");
+      if (document.hidden) {
+        music.pause();
+      }
+    
+    });
 
 
     /* =========================================
