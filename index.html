@@ -1048,10 +1048,13 @@
           महाआरती व प्रसाद
         </h2>
 
-
+<!-- =======================================
         <p class="date-text">
           Monday, 21<sup>st</sup> Sep 2026
         </p>
+======================================== -->
+
+        <p class="date-text" id="eventDate"></p>
 
 
         <p class="time-text">
@@ -1309,6 +1312,18 @@
     
     const INVITE_CODE =
       urlParams.get("invite") || "A7K9";
+
+    /* EVENT DATE */
+    const eventDate =
+      document.getElementById("eventDate");
+      
+    if (INVITE_CODE === "M4P2") {
+      eventDate.innerHTML =
+      "Tuesday, 22<sup>nd</sup> Sep 2026";
+    } else {
+      eventDate.innerHTML =
+      "Monday, 21<sup>st</sup> Sep 2026";
+    }
     
     /* =========================================
        OPEN INVITATION
