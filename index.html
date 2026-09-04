@@ -8,7 +8,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>गणेशोत्सव - भोकरे परिवार आमंत्रण</title>
+  <title>गणेशोत्सव २०२६ - भोकरे परिवार आमंत्रण</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1303,6 +1303,12 @@
 
     const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbyBM0EBL9wSEwFAgYDT3ZGaRnZdiQNw0OTq4LTODs3m061CmrgKb_Udv1m0L1qXR_w/exec";
+
+    const urlParams =
+      new URLSearchParams(window.location.search);
+    
+    const INVITE_CODE =
+      urlParams.get("invite") || "A7K9";
     
     /* =========================================
        OPEN INVITATION
@@ -1558,6 +1564,13 @@
         guests
       );
 
+      /* INVITATION CODE */
+      
+      addHiddenInput(
+        submitForm,
+        "invite",
+        INVITE_CODE
+      );
 
       document.body.appendChild(
         submitForm
