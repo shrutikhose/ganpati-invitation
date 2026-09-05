@@ -492,12 +492,22 @@
       opacity: 0.9;
 
       animation: swipeUpFloat 1.8s ease-in-out infinite;
+
+      transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
     } 
 
     .swipe-up-arrow {
       font-size: 28px;
       line-height: 1;
       margin-bottom: 2px;
+    }
+
+    .swipe-up.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     @keyframes swipeUpFloat {
@@ -1066,8 +1076,9 @@
         <img src="hero-visual-BBS8_Fih.webp" 
         alt="श्री गणेश" 
         class="ganpati-image" 
-        
         > 
+
+
       </div> 
       <div class="swipe-up">
       <div class="swipe-up-arrow">↑</div>
@@ -1755,6 +1766,24 @@
 
       }
     );
+
+    /* =========================================
+       HIDE SWIPE UP WHEN SCROLLING
+    ========================================= */
+
+    const swipeUp =
+      document.querySelector(".swipe-up");
+
+    window.addEventListener("scroll", function() {
+
+      if (window.scrollY > 30) {
+        swipeUp.classList.add("hidden");
+      } else {
+        swipeUp.classList.remove("hidden");
+      }
+
+    });
+
 
 
   </script>
