@@ -469,6 +469,49 @@
       display: block;
     }
 
+    /* =========================================
+   SWIPE UP INDICATOR - PAGE 1
+========================================= */
+
+    .swipe-up {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: #f5d681;
+      font-size: 13px;
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+
+      opacity: 0.9;
+
+      animation: swipeUpFloat 1.8s ease-in-out infinite;
+    } 
+
+    .swipe-up-arrow {
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    @keyframes swipeUpFloat {
+      0%, 100% {
+        transform: translate(-50%, 0);
+        opacity: 0.65;
+        }
+
+      50% {
+        transform: translate(-50%, -8px);
+        opacity: 1;
+        }
+    }
+
 
     /* =========================================
        PAGE 2
@@ -1026,6 +1069,10 @@
         
         > 
       </div> 
+      <div class="swipe-up">
+      <div class="swipe-up-arrow">↑</div>
+      <div>SWIPE UP</div>
+      </div>
       
    
 
